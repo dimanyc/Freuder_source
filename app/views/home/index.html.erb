@@ -1,0 +1,9 @@
+<h1>Home Controller, Index Page</h1>
+
+<%=link_to "Sign in with Twitter", "auth/twitter" %>
+
+<ul>
+<% @messages.each do |i| %>
+<li><%=i.body %>&nbsp;|&nbsp;<%=i.author %></li>
+<% end %>
+</ul>
