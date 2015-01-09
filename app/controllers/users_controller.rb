@@ -4,14 +4,15 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(session[:user_id])
-
-		if current_user == @user 
-			@messages = Message.all#add filtering here
-		else
-			flash[:alert] = "Please log-in first"
-			redirect_to home_path
-		end
-
+		# if session[:user_id] && current_user == session[:user_id]
+		# 	@user = current_user
+		# 	@messages = Message.all? 
+		# else
+		# 	flash[:alert] = "Please log-in first"
+		# 	redirect_to home_path
+		# end
+		@user = current_user
+		@messages = Message.all
+		@image = current_user.image_url.gsub!("_normal","")
 	end
 end

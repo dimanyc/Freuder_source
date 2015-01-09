@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
 	private
 
 		def current_user
-		  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+			@current_user ||= User.find(session[:user_id]) if session[:user_id]
+			rescue ActiveRecord::RecordNotFound # rescues if current_user is nil 
+				redirect_to home_path
+				flash[:alert] = "Please Log-In First"
 		end
-		helper_method :current_user
+			helper_method :current_user
 
 end

@@ -5,7 +5,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 		:image_size => 'original',
 		:authorize_params => {
 		:force_login => 'true',
-		:lang => 'pt'
 		}
     }
 end

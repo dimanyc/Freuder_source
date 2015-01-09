@@ -1,2 +1,2 @@
 <h1><%= current_user.uid %></h1>
-<img src="<%=User.find(session[:user_id]).image_url%>" />
+<%= image_tag(@image) %>
