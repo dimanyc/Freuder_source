@@ -4,8 +4,7 @@ class CreateFilters < ActiveRecord::Migration
     	t.integer :user_id
     	t.string :name 
     	t.text :description
-    	
-
+    	t.text :slips
       t.timestamps
     end
   end

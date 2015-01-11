@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :users
+  resources :users do 
+    resources :filters
+  end
+
+  resources :filters 
 
   root 'home#index', as: 'home'
   match 'auth/twitter/callback', to: 'sessions#create', via: [:get, :post]

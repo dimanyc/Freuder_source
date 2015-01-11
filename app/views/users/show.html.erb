@@ -1,2 +1,10 @@
 <h1><%= current_user.uid %></h1>
 <%= image_tag(@image) %>
+
+<ul>
+<% @messages.each do |i| %>
+<li><%=i.body%><%=i.author%></li>
+<% end %>
+</ul>
+
+<%= link_to "Create Filter", new_user_filter_path(current_user) %>
