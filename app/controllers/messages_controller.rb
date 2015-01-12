@@ -23,19 +23,23 @@ class MessagesController < ApplicationController
 	def create
 		@message = Message.new(message_params)
 
-		if @message.save
-			current_user.filters.each do |filter|
+		respond_to do |format|
+			if @message.save
+				current_user.filters.each do |filter|
+					
 
-				if filter.evaluate_message(@message)
-					filter.messages << @message
-					flash[:notice] = "Message matches one or more of your filters"
-				else
-					flash[:notice] = "Not matching any filters"
+					if 	filter.evaluate_message(@message)
+							filter.messages << @message
+							format.html { flash[:notice] = 'Message matches one or more of your filters' }
+					else
+						format.html { flash[:notice] = 'Not matching any filters' }
+						format.json { render json: @message.errors, status: :unprocessable_entity }
+					end
+				
+
 				end
-			redirect_to :back
-
+				redirect_to user_path(current_user)
 			end
-
 		end	
 
 	end

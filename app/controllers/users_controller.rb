@@ -6,9 +6,10 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@messages = Message.all
+		@messages = Message.uniq
 		@user_filters = Filter.where(user_id: current_user.id)
 		@image = current_user.image_url.gsub!("_normal","")
+		@message = Message.new
 	end
 
 	def analyze

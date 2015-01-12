@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
 	end	
 	helper_method :current_user
 
+
+
+rescue AbstractController::DoubleRenderError
+	redirect_to home_path
 end
