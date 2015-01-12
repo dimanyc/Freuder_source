@@ -11,18 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111003319) do
-
-  create_table "filtered_messages", force: true do |t|
-    t.integer  "user_id"
-    t.text     "body"
-    t.string   "author"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150109191547) do
 
   create_table "filters", force: true do |t|
     t.integer  "user_id"
+    t.integer  "message_id"
     t.string   "name"
     t.text     "description"
     t.text     "slips"
@@ -31,12 +24,15 @@ ActiveRecord::Schema.define(version: 20150111003319) do
   end
 
   create_table "messages", force: true do |t|
-    t.integer  "user_id"
     t.text     "body"
     t.string   "author"
+    t.integer  "messageable_id"
+    t.string   "messageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "messages", ["messageable_id", "messageable_type"], name: "index_messages_on_messageable_id_and_messageable_type"
 
   create_table "users", force: true do |t|
     t.string   "fname"

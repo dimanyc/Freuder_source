@@ -9,10 +9,10 @@
 
 <p><%= params %></p>
 <p><%= flash[:notice] if flash[:notice] %></p>
-<p><%= flash[:notice] if flash[:notice] %></p>
+<p><%= flash[:alert] if flash[:alert] %></p>
 
 <body>
-
+<%#= console %>
 <%= yield %>
 
 </body>

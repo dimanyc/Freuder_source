@@ -36,9 +36,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
+#gem 'store_base_sti_class' #Modifies ActiveRecord 3.0.5+ with the ability to store the actual class (instead of the base class) in polymorphic _type columns when using STI
+
+
 gem 'omniauth-twitter'
 gem "binding_of_caller"
 group :development do
 	#gem "better_errors"
 	gem 'sqlite3'
+	#gem 'web-console'
 end

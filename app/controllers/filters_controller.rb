@@ -18,7 +18,7 @@ class FiltersController < ApplicationController
 	end
 
 	def show
-		@user = current_user
+		#@user = current_user
 		@filter = Filter.find(params[:id])
 	end
 

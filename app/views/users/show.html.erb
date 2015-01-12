@@ -1,27 +1,29 @@
 <h1><%= current_user.uid %></h1>
 <%= image_tag(@image) %>
 
-<ul>
-<% @messages.each do |i| %>
-<li><%=i.body%><%=i.author%><%=User.find(i.user_id).name%></li>
-<% end %>
-</ul>
+
 
 <%= link_to "Analyze", analyze_path(@user) %>
 
 <%= link_to "Create Filter", new_user_filter_path(current_user) %>
-<div>
-<em><%#= current_user.filtered_messages_count %></em>
-</div>
 
 
-<h1>Filtered Messages:</h1>
+<h2>All Messages</h2>
 <ul>
-
-	<% @filtered_messages.each do |i| %>
-	<li>
-	<%= i.body %>
-	</li>
-	<% end %>
-	
+<% @messages.each do |i| %>
+<li><%=i.body%> | <%=i.author%></li>
+<% end %>
 </ul>
+
+
+<h2>Filtered Messages</h2>
+<ul>
+<% @user_filters.each do |f| %>
+	<% f.messages.each do |m| %>
+	<li><%= m.body %></li>
+	<% end %>
+<% end %>
+</ul>
+
+<h1>New Message:</h1>
+<%= link_to 'new message',new_message_path %>

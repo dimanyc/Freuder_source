@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   
   resources :users do 
     resources :filters
-  end
 
+  end
+  
+  resources :messages
   resources :filters 
 
   root 'home#index', as: 'home'

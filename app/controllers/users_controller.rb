@@ -1,29 +1,38 @@
 class UsersController < ApplicationController
-	before_action :set_filters, only: [:show, :edit, :update, :destroy]
+	#before_action :set_filters, only: [:show, :edit, :update, :destroy]
 
 	# Read
 	def index
 	end
 
 	def show
-		@messages = current_user.messages
+		@messages = Message.all
+		@user_filters = Filter.where(user_id: current_user.id)
 		@image = current_user.image_url.gsub!("_normal","")
-		@filtered_messages = current_user.filtered_messages
 	end
 
 	def analyze
 		@filtered_messages = current_user.filtered_messages.uniq
 		@messages = current_user.messages
-		@slips = Filter.where(user_id: current_user.id).select(:slips).map(&:slips).join(" ").split(", ")
+		@slips = Filter.where(user_id: current_user.id).select(:slips).map(&:slips)
 		
-		@messages.each do |message|
-			while @slips.any?{ |slip| message[slip] } do 
-				filtered_message = FilteredMessage.new(body:message.body, author:message.author)
-				filtered_message.save 
-				current_user.filtered_messages << filtered_message
-				next
+		@messages.each do |m|
+			@slips.each do |s|
+				if m.body.downcase.include?(s.downcase)
+					filtered_message = FilteredMessage.new(body:message.body, author:message.author)
+					filtered_message.save
+					current_user.filtered_messages << filtered_message
+				end
 			end
 		end
+		# @messages.each do |message|
+		# 	while @slips.any?{ |slip| message[slip] } do 
+		# 		filtered_message = FilteredMessage.new(body:message.body, author:message.author)
+		# 		filtered_message.save 
+		# 		current_user.filtered_messages << filtered_message
+		# 		next
+		# 	end
+		# end
 
 	end
 
