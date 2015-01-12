@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 	
 	#Active Relations:
 	has_many :filters
+	has_many :messages
+	has_many :filtered_messages
+	
 	#Model-level methods: 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

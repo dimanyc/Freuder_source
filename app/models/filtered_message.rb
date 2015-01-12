@@ -1,3 +1,9 @@
 class FilteredMessage < ActiveRecord::Base
-	belongs_to :filter
+
+	# Active Relations: 
+	belongs_to :user 
+
+	# Validations 
+	validates_uniqueness_of :body
+
 end

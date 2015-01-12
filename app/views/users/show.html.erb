@@ -3,8 +3,25 @@
 
 <ul>
 <% @messages.each do |i| %>
-<li><%=i.body%><%=i.author%></li>
+<li><%=i.body%><%=i.author%><%=User.find(i.user_id).name%></li>
 <% end %>
 </ul>
 
+<%= link_to "Analyze", analyze_path(@user) %>
+
 <%= link_to "Create Filter", new_user_filter_path(current_user) %>
+<div>
+<em><%#= current_user.filtered_messages_count %></em>
+</div>
+
+
+<h1>Filtered Messages:</h1>
+<ul>
+
+	<% @filtered_messages.each do |i| %>
+	<li>
+	<%= i.body %>
+	</li>
+	<% end %>
+	
+</ul>
