@@ -13,32 +13,17 @@ class UsersController < ApplicationController
 
 	def analyze
 		@filtered_messages = current_user.filtered_messages.uniq
-		@messages = Message.all.select {|m| m.user_id == current_user.id }
-		@slips = Filter.find_by(user_id:current_user.id).slips.split(", ")
+		@messages = current_user.messages
+		@slips = Filter.where(user_id: current_user.id).select(:slips).map(&:slips).join(" ").split(", ")
 		
-		@message.each. do |message|
-			if @slips.any?{ |slip| message[slip] }
+		@messages.each do |message|
+			while @slips.any?{ |slip| message[slip] } do 
 				filtered_message = FilteredMessage.new(body:message.body, author:message.author)
 				filtered_message.save 
-		 		current_user.filtered_messages << filtered_message
-		 	end
+				current_user.filtered_messages << filtered_message
+				next
+			end
 		end
-
-		# @messages.each do |message|
-		
-		# 	if message.body.downcase.gsub(/[^[[:word:]]\s]/, '').any?@slips { | | message[]}
-
-
-		# 		filtered_message = FilteredMessage.new(body:message.body, author:message.author)
-		# 		filtered_message.save 
-		# 		current_user.filtered_messages << filtered_message
-		# 	else
-		# 		next	
-		# 	end
-		# 	next
-		#end
-		
-
 
 	end
 

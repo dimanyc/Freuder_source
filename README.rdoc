@@ -12,7 +12,7 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-
+- run rake db_tasks:rebuild to reset the db and seed with three random messages for user_id (1)
 * Database initialization
 
 * How to run the test suite

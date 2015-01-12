@@ -3,7 +3,7 @@ class FilteredMessage < ActiveRecord::Base
 	# Active Relations: 
 	belongs_to :user 
 
-	# Validations 
+	# Validations: 
 	validates_uniqueness_of :body
 
 end
