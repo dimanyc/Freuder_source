@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
 		@message = Message.new
 	end
 
-	### Tweet from App
 	def create
 		@message = Message.new(message_params)
 
@@ -21,6 +20,7 @@ class MessagesController < ApplicationController
 		redirect_to user_path(current_user)
 	end
 
+	# Read 
 	def refresh # loads new data from Twitter
 		@tweets = $client.home_timeline
 
@@ -39,6 +39,7 @@ class MessagesController < ApplicationController
 		
 	end	
 
+	# Update
 
 	def analyze # crawls through new tweets with current_user.filters 
 		@messages = Message.all
@@ -61,7 +62,15 @@ class MessagesController < ApplicationController
 
 		redirect_to user_path(current_user)
 
-	end # def analyze
+	end # def analyze	
+
+	# Destroy
+	def destroy
+		@messages = Message.all
+		@messages.destroy_all
+
+		redirect_to user_path(current_user)
+	end
 
 
 	### ADVANCED CREATE:

@@ -12,9 +12,11 @@ Rails.application.routes.draw do
 
   root 'home#index', as: 'home'
   match 'auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
-  get '/refresh' => 'messages#refresh', as: 'refresh'
 
+  # Message Control
+  get '/refresh' => 'messages#refresh', as: 'refresh'
   get '/analyze' => 'messages#analyze', as: 'analyze'
+  get '/destroy' => 'messages#destroy', as: 'destroy'
 
   
 
