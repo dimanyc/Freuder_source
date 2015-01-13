@@ -16,8 +16,7 @@ Rails.application.routes.draw do
 
   get '/analyze' => 'messages#analyze', as: 'analyze'
 
-  get 't-home' => 'home#t-home', layout: false
-  #get 'test' => "store#test", layout: false
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

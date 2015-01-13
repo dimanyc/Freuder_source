@@ -1,46 +1,81 @@
 
-<h1><%= current_user.uid %></h1>
-<%= image_tag(@image) %>
+<div class="col-md-3">
+  <section id="profile-image">
 
+  <h1>@<%= current_user.username %></h1>
+  <%= image_tag(@image) %>
+  </section>
 
-<br/>
-<%#= link_to "Analyze", analyze_path(@user) %>
+  <section id="profile-filters">
 
-<br/>
-<%= link_to new_user_filter_path(current_user), class: "btn btn-default" do %>
-	<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Create Filter
-<% end %>
+  <h2>User Tags:</h2>
+    <ul>
+      <% @user_filters.each do |i| %>
+      <li><b>Name:</b> <%=i.name%> &nbsp;|&nbsp; <b>Slips:</b> <%=i.slips%> </li>
+      <% end %>
+    </ul>
 
-<br/>
-<h2>User Filters:</h2>
-<ul>
-<% @user_filters.each do |i| %>
-<li><b>Name:</b> <%=i.name%> &nbsp;|&nbsp; <b>Slips:</b> <%=i.slips%> </li>
-<% end %>
-</ul>
+    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag
+    <% end %>
+  </section>
 
+  <section id="profile-new-tweet">
+  <h2>Send new Tweet:</h2>
+  <%= render 'messages/form' %>
+  </section>
 
+    
+</div><!--end-.col-md-4-->
 
-<h2>All Messages:</h2>
-<ul>
-<% @messages.each do |i| %>
-<li><%=i.body%> | <%=i.author%></li>
-<% end %>
-</ul>
-<br/>
-<%= link_to refresh_path, class: "btn btn-default" do %>
-	<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
-<% end %>
+<section id="profile-feed">
+  <div class="col-md-4">
+    <h2>All Messages:</h2>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
 
-<h2>Filtered Messages:</h2>
-<ul>
-<% @user_filters.each do |f| %>
-	<% f.messages.each do |m| %>
-	<li><%= m.body %></li>
-	<% end %>
-<% end %>
-</ul>
+      <div class="btn-group" role="group">
+    <%= link_to refresh_path, class: "btn btn-info" do %>
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+    <% end %>        
+      </div>
 
-<h2>Send new Tweet:</h2>
-<%= render 'messages/form' %>
+      <div class="btn-group" role="group">
+    <%= link_to analyze_path, class: "btn btn-success" do %>
+        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
+        <% end %>         
+      </div>      
+
+      <div class="btn-group" role="group">
+    <%= link_to analyze_path, class: "btn btn-warning",  remote: true do %>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All
+    <% end %>         
+      </div>
+
+    </div><!--end_.button-group-->
+
+    <br/>
+
+      <ul>
+        <% @messages.each do |i| %>
+        <li><%=i.body%> | <%=i.author%></li>
+        <% end %>
+      </ul>
+    <br/>
+    
+  </div>
+</section>
+
+<section id="profile-filtered-feed">
+  <div class="col-md-4">
+    <h2>Filtered Messages:</h2>
+      <ul>
+      <% @user_filters.each do |f| %>
+          <% f.messages.each do |m| %>
+          <li><%= m.body %></li>
+          <% end %>
+      <% end %>
+      </ul>
+  </div>
+</section>
+
 

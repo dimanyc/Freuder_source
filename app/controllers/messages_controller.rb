@@ -22,13 +22,21 @@ class MessagesController < ApplicationController
 	end
 
 	def refresh # loads new data from Twitter
-		save_tweets_to_messages
+		@tweets = $client.home_timeline
 
-		@messages = current_user.messages
-		# @tweets.each do |tweet|
-		# 		Message.create( body:tweet.text, author:tweet.user.screen_name)
-		# end
+		
+		if @tweets.each do |tweet|
+				Message.create( body:tweet.text, author:tweet.user.screen_name)
+			end	# @tweets.each do |tweet|
 
+			redirect_to user_path(current_user)	
+			flash[:notice] = "Message feed has been updated"
+
+		else
+
+			flash[:alert] = "Problem reloading the message feed"
+		end
+		
 	end	
 
 
@@ -40,11 +48,11 @@ class MessagesController < ApplicationController
 			
 				if 	filter.evaluate_message(message)
 						filter.messages << message
-						flash[:notice] = 'Message matches one or more of your filters' 
+						flash[:notice] = 'Found messages that are mathing your tags' 
 
 				else
 					respond_to do |format|
-						format.html { flash[:notice] = 'Not matching any filters' }
+						format.html { flash[:notice] = 'No new messages are matching any of your tags' }
 						format.json { render json: @message.errors, status: :unprocessable_entity }
 					end # respond_to
 				end # filter.evaluate_message
