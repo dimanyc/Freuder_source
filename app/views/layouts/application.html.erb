@@ -8,6 +8,7 @@
 </head>
 
 <p><%= params %></p>
+<p><%= link_to 'Logout',logout_path(session[:user_id]) %></p>
 <p><%= flash[:notice] if flash[:notice] %></p>
 <p><%= flash[:alert] if flash[:alert] %></p>
 

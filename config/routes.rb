@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :messages
   resources :filters 
 
+  resources :sessions, only: [:destroy], as: :logout
+
   root 'home#index', as: 'home'
   match 'auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
   get '/analyze' => 'users#analyze', as: 'analyze'

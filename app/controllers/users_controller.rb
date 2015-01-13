@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 		@user_filters = Filter.where(user_id: current_user.id)
 		@image = current_user.image_url.gsub!("_normal","")
 		@message = Message.new
+		@followers = $client.followers("dimanyc")
+		@user_tweets = $client.user_timeline("dimanyc")
+		@users_tweets = $client.home_timeline
+
 	end
 
 	def analyze
@@ -26,15 +30,7 @@ class UsersController < ApplicationController
 				end
 			end
 		end
-		# @messages.each do |message|
-		# 	while @slips.any?{ |slip| message[slip] } do 
-		# 		filtered_message = FilteredMessage.new(body:message.body, author:message.author)
-		# 		filtered_message.save 
-		# 		current_user.filtered_messages << filtered_message
-		# 		next
-		# 	end
-		# end
-
+		
 	end
 
 	private 

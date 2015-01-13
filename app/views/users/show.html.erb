@@ -2,21 +2,38 @@
 <%= image_tag(@image) %>
 
 
-
+<br/>
 <%= link_to "Analyze", analyze_path(@user) %>
 
+<br/>
 <%= link_to "Create Filter", new_user_filter_path(current_user) %>
 
+<br/>
+<h2>User Filters:</h2>
+<ul>
+<% @user_filters.each do |i| %>
+<li><b>Name:</b> <%=i.name%> &nbsp;|&nbsp; <b>Slips:</b> <%=i.slips%> </li>
+<% end %>
+</ul>
 
-<h2>All Messages</h2>
+
+
+<h2>All Messages:</h2>
 <ul>
 <% @messages.each do |i| %>
 <li><%=i.body%> | <%=i.author%></li>
 <% end %>
 </ul>
 
+<h2>Followers:</h2>
+<ul>
+<% @followers.each do |i| %>
+<%=i.id%>
+<% end %>
+</ul>
 
-<h2>Filtered Messages</h2>
+
+<h2>Filtered Messages:</h2>
 <ul>
 <% @user_filters.each do |f| %>
 	<% f.messages.each do |m| %>
@@ -25,7 +42,21 @@
 <% end %>
 </ul>
 
-<h1>New Message:</h1>
+<h2>Your Tweets:</h2>
+<ul>
+<% @user_tweets.each do |i| %>
+<li><%=i.text%></li>
+<% end %>
+</ul>
+
+<h2>Users Tweets:</h2>
+<ul>
+<% @users_tweets.each do |i| %>
+<li><%=i.text%></li>
+<% end %>
+</ul>
+
+
+<h2>Send new Tweet:</h2>
 <%= render 'messages/form' %>
 
-<%= link_to 'new message',new_message_path %>
