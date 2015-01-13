@@ -6,15 +6,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-
-<p><%= params %></p>
-<p><%= link_to 'Logout',logout_path(session[:user_id]) %></p>
-<p><%= flash[:notice] if flash[:notice] %></p>
-<p><%= flash[:alert] if flash[:alert] %></p>
-
 <body>
-<%#= console %>
-<%= yield %>
+<div class="container">
+	<div class="row">
+	
+	<%= render 'layouts/alerts' %>
+	<%= render 'layouts/login' %>
+	<%= render 'layouts/debugger' %>
+	
+	
+	<%= yield %>
+	
+	<footer>
+	</footer>
+
+
+
+	</div><!--end_row-->
+</div><!--end_.container-->
+
+
+
 
 </body>
 </html>

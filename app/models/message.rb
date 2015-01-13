@@ -8,4 +8,8 @@ class Message < ActiveRecord::Base
 
 	# Model Methods
 
+	def create_message_from_tweet(tweet)
+		#self.body = tweet.
+	end
+
 end

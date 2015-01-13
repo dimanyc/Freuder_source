@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+/*Dismiss alerts after 4ms.*/
+$(document).ready (function(){
+	$(".alert").delay(4000).slideUp(200, function() {
+	    $(this).alert('close');
+	});
+ });

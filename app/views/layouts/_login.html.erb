@@ -1,0 +1,3 @@
+<% unless session[:user_id] == nil %>
+	<p><%= link_to "Logout", logout_path(session[:user_id]), method: "delete" %> </p>
+<% end %>

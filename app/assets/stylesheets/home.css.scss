@@ -1,3 +1,91 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$black: black;
+$grey: lightslategray;
+$greybg: whitesmoke;
+$highlight:crimson;
+
+/*Globals*/
+
+html
+	{
+		position: relative;
+		min-height: 100%;
+	}
+
+body 
+	{
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+		text-shadow: rgba(0,0,0,.01) 0 0 1px;
+		font-size:16px;
+		margin-bottom:60px;/*for stick footer*/
+
+		h1,h2,h3,h4,h5,h6
+			{
+				color:$black;
+				text-transform: uppercase;
+				font-weight: 900;
+				
+			}
+		b{font-weight:900;}
+
+	}
+a
+	{
+		text-decoration:none;
+		color:$black;
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+		color:$highlight!important;
+	}
+
+a:hover, a:focus
+	{
+		color:$highlight;
+		text-decoration: none!important;
+	}	
+
+/*Notifications*/	
+
+.field_with_errors
+	{
+		color: $highlight;
+		input[type=text]
+			{
+				border-color: $highlight;
+			}
+
+	}
+.flash-alerts
+	{
+		z-index:9999;
+		position:absolute;
+		left:50%;
+	}
+.alert
+	{
+		position:relative;
+		top:0;
+		left: -50%;
+		display: block;
+		width:100%;
+		border-radius: 0px;
+	}
+	
+/*Debugger*/
+div.debugger
+	{	
+		position: fixed;
+		bottom:15px;
+		right:15px;
+		background-color:rgba(128,128,128,.2);
+		color:$black;
+		padding:15px;
+	}

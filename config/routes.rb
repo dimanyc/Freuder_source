@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root 'home#index', as: 'home'
   match 'auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
-  get '/analyze' => 'users#analyze', as: 'analyze'
+  get '/refresh' => 'messages#refresh', as: 'refresh'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

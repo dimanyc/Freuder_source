@@ -21,6 +21,29 @@ class MessagesController < ApplicationController
 		redirect_to user_path(current_user)
 	end
 
+	def refresh
+		@messages = Message.all
+
+		@messages.each do |message|
+			current_user.filters.each do |filter|
+			
+				if 	filter.evaluate_message(message)
+						filter.messages << message
+						flash[:notice] = 'Message matches one or more of your filters' 
+
+				else
+					respond_to do |format|
+						format.html { flash[:notice] = 'Not matching any filters' }
+						format.json { render json: @message.errors, status: :unprocessable_entity }
+					end # respond_to
+				end # filter.evaluate_message
+			end # current_user.filters.each do |filter|
+		end	# @messages.each 
+
+		redirect_to user_path(current_user)
+
+	end # def refresh
+
 
 	### ADVANCED CREATE:
 	# def create
@@ -29,21 +52,21 @@ class MessagesController < ApplicationController
 		
 	# 		if @message.save
 	# 			$twitter.update(@message)
-	# 			current_user.filters.each do |filter|
+				# current_user.filters.each do |filter|
 					
 
-	# 				if 	filter.evaluate_message(@message)
-	# 						filter.messages << @message
-	# 						flash[:notice] = 'Message matches one or more of your filters' 
-	# 				else
-	# 					respond_to do |format|
-	# 						format.html { flash[:notice] = 'Not matching any filters' }
-	# 						format.json { render json: @message.errors, status: :unprocessable_entity }
-	# 					end
-	# 				end
+				# 	if 	filter.evaluate_message(@message)
+				# 			filter.messages << @message
+				# 			flash[:notice] = 'Message matches one or more of your filters' 
+				# 	else
+				# 		respond_to do |format|
+				# 			format.html { flash[:notice] = 'Not matching any filters' }
+				# 			format.json { render json: @message.errors, status: :unprocessable_entity }
+				# 		end
+				# 	end
 				
 
-	# 			end
+				# end
 	# 			redirect_to user_path(current_user)
 	# 		end
 			

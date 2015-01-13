@@ -1,12 +1,13 @@
+
 <h1><%= current_user.uid %></h1>
 <%= image_tag(@image) %>
 
 
 <br/>
-<%= link_to "Analyze", analyze_path(@user) %>
+<%#= link_to "Analyze", analyze_path(@user) %>
 
 <br/>
-<%= link_to "Create Filter", new_user_filter_path(current_user) %>
+<%= link_to "Create Filter", new_user_filter_path(current_user)%>
 
 <br/>
 <h2>User Filters:</h2>
@@ -24,14 +25,8 @@
 <li><%=i.body%> | <%=i.author%></li>
 <% end %>
 </ul>
-
-<h2>Followers:</h2>
-<ul>
-<% @followers.each do |i| %>
-<%=i.id%>
-<% end %>
-</ul>
-
+<br/>
+<%= link_to "Refresh", refresh_path %>
 
 <h2>Filtered Messages:</h2>
 <ul>
@@ -41,21 +36,6 @@
 	<% end %>
 <% end %>
 </ul>
-
-<h2>Your Tweets:</h2>
-<ul>
-<% @user_tweets.each do |i| %>
-<li><%=i.text%></li>
-<% end %>
-</ul>
-
-<h2>Users Tweets:</h2>
-<ul>
-<% @users_tweets.each do |i| %>
-<li><%=i.text%></li>
-<% end %>
-</ul>
-
 
 <h2>Send new Tweet:</h2>
 <%= render 'messages/form' %>

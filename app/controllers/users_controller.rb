@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 		@followers = $client.followers("dimanyc")
 		@user_tweets = $client.user_timeline("dimanyc")
 		@users_tweets = $client.home_timeline
-
 	end
 
 	def analyze
