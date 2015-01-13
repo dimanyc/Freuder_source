@@ -7,7 +7,9 @@
 <%#= link_to "Analyze", analyze_path(@user) %>
 
 <br/>
-<%= link_to "Create Filter", new_user_filter_path(current_user)%>
+<%= link_to new_user_filter_path(current_user), class: "btn btn-default" do %>
+	<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Create Filter
+<% end %>
 
 <br/>
 <h2>User Filters:</h2>
@@ -26,7 +28,9 @@
 <% end %>
 </ul>
 <br/>
-<%= link_to "Refresh", refresh_path %>
+<%= link_to refresh_path, class: "btn btn-default" do %>
+	<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+<% end %>
 
 <h2>Filtered Messages:</h2>
 <ul>

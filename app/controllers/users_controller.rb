@@ -10,9 +10,9 @@ class UsersController < ApplicationController
 		@user_filters = Filter.where(user_id: current_user.id)
 		@image = current_user.image_url.gsub!("_normal","")
 		@message = Message.new
-		@followers = $client.followers("dimanyc")
-		@user_tweets = $client.user_timeline("dimanyc")
-		@users_tweets = $client.home_timeline
+		#@followers = $client.followers("dimanyc")
+		#@user_tweets = $client.user_timeline("dimanyc")
+		#@users_tweets = $client.home_timeline
 	end
 
 	def analyze

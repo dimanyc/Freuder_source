@@ -21,7 +21,18 @@ class MessagesController < ApplicationController
 		redirect_to user_path(current_user)
 	end
 
-	def refresh
+	def refresh # loads new data from Twitter
+		save_tweets_to_messages
+
+		@messages = current_user.messages
+		# @tweets.each do |tweet|
+		# 		Message.create( body:tweet.text, author:tweet.user.screen_name)
+		# end
+
+	end	
+
+
+	def analyze # crawls through new tweets with current_user.filters 
 		@messages = Message.all
 
 		@messages.each do |message|
@@ -42,7 +53,7 @@ class MessagesController < ApplicationController
 
 		redirect_to user_path(current_user)
 
-	end # def refresh
+	end # def analyze
 
 
 	### ADVANCED CREATE:
@@ -83,15 +94,6 @@ class MessagesController < ApplicationController
 		
 	end
 
-	def analyze
-		@messages = Message.all
-		@slips = Slip.all
-		@messages.each do |i|
-				i.analyze(i,)
-			@messages.analyze()
-			redirect_to user_path(current_user)
-		end
-	end
 
 	# Strong Params 
 	private 

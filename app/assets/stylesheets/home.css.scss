@@ -43,7 +43,6 @@ a
 		-moz-transition: all 0.3s ease-out;
 		-o-transition: all 0.3s ease-out;
 		transition: all 0.3s ease-out;
-		color:$highlight!important;
 	}
 
 a:hover, a:focus
@@ -51,6 +50,34 @@ a:hover, a:focus
 		color:$highlight;
 		text-decoration: none!important;
 	}	
+/*Header*/
+header
+	{	
+		nav
+		{
+			font-size:14px;
+				p.navbar-text, p.navbar-text a 
+					{
+						color:$greybg!important;
+					}
+		}
+	}
+
+a.navbar-brand
+	{
+		text-transform: uppercase;font-weight:900;color:$greybg!important;
+			img
+			{
+				float:left;
+				margin-top: -10px;
+				margin-right: 14px;
+			}
+	}
+.profile-pic{margin-top:-15px;margin-bottom:-14px;}
+
+/*Profile*/
+
+section#profile{margin-top: 72px;}
 
 /*Notifications*/	
 

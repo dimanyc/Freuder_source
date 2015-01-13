@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>F2</title>
+  <link rel="stylesheet" href="/assets/application.css?body=1" media="all" rel="stylesheet" />
+<link data-turbolinks-track="true" href="/assets/home.css?body=1" media="all" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+  </script>
+
+</head>
+<body>
+
+<header>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="/assets/freuder-logo.png" height="40px" width="40px" class="img-responsive img-circle" />Freuder</a>
+    </div>
+
+    <!--Nav Profle-->
+     <p class="navbar-text navbar-right">Hello, <a href="#" class="navbar-link">@Dimanyc <img src="http://pbs.twimg.com/profile_images/378800000281281539/e32adf0005c6d2b5c39b5f593e3b77c2_normal.jpeg" class="profile-pic"/></a></p>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a></li>
+        <li class="active"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile<span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</a></li>
+      </ul>
+
+    </div><!--/.nav-collapse -->
+
+  </div>
+</nav>
+</header>
+
+<!--Profile section-->
+<section id="profile">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6" id="profile-picture">
+      <img src="http://pbs.twimg.com/profile_images/378800000281281539/e32adf0005c6d2b5c39b5f593e3b77c2.jpeg" alt="dimanyc" class="img-responsive"/>
+    </div><!--end_#profile-picture-->
+    <div class="col-md-9">
+
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Filtered Messages</a></li>
+        <li role="presentation"><a href="#">All Messages</a></li>
+      </ul>
+
+      <div class="panel panel-default">
+        <div class="panel-body">                
+          <form accept-charset="UTF-8" action="" method="POST">
+            <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
+            <h6 class="pull-right" id="counter">320 characters remaining</h6>
+            <button class="btn btn-info" type="submit">Post New Message</button>
+          </form>
+        </div><!--panel-body-->
+      </div><!--end panel-->
+
+    </div><!--end_col-md-10-->
+  </div><!--end_.row-->
+</div><!--end_.container-->
+</section><!--end_#container-->
+
+ <div class="container">
+ </div><!--end_.container-->
+</body>
