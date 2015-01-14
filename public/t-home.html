@@ -50,20 +50,30 @@
     </div><!--end_#profile-picture-->
     <div class="col-md-9">
 
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Filtered Messages</a></li>
-        <li role="presentation"><a href="#">All Messages</a></li>
-      </ul>
 
-      <div class="panel panel-default">
-        <div class="panel-body">                
-          <form accept-charset="UTF-8" action="" method="POST">
-            <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
-            <h6 class="pull-right" id="counter">320 characters remaining</h6>
-            <button class="btn btn-info" type="submit">Post New Message</button>
-          </form>
-        </div><!--panel-body-->
-      </div><!--end panel-->
+    <ul class="nav nav-tabs right-to-left">
+
+      <li class="active"><a href="#all-messages" data-toggle="tab"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp;All Messages </a></li>
+
+      <li><a href="#filtered-messages" data-toggle="tab"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>&nbsp;Filtered Messages</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+
+      <div class="tab-pane fade active in" id="all-messages">
+        <h4>Pane A</h4>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+            ac turpis egestas.</p>
+      </div>
+
+      <div class="tab-pane fade" id="filtered-messages">
+        <h4>Pane B</h4>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+            ac turpis egestas.</p>
+      </div>
+            
+    </div><!-- tab content -->
 
     </div><!--end_col-md-10-->
   </div><!--end_.row-->

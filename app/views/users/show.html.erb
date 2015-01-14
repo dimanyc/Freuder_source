@@ -1,35 +1,103 @@
+<div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6">
 
-<div class="col-md-3">
+  <!--Profile Image-->
   <section id="profile-image">
-
-  <h1>@<%= current_user.username %></h1>
-  <%= image_tag(@image) %>
+    <%= image_tag(@image) %>
+    <h1>@<%= current_user.username %></h1>
   </section>
 
-  <section id="profile-filters">
+  <!--Tags-->
+  <section id="user-tags">
+    <h2>User Tags:</h2>
+      <ul>
+        <% @user_filters.each do |i| %>
+        <li><b>Name:</b> <%=i.name%> &nbsp;|&nbsp; <b>Slips:</b> <%=i.slips%> </li>
+        <% end %>
+      </ul>
 
-  <h2>User Tags:</h2>
-    <ul>
-      <% @user_filters.each do |i| %>
-      <li><b>Name:</b> <%=i.name%> &nbsp;|&nbsp; <b>Slips:</b> <%=i.slips%> </li>
+      <%= link_to new_user_filter_path(current_user), class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag
       <% end %>
-    </ul>
+  </section>    
+</div><!--end_col-md-3-->    
 
-    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag
-    <% end %>
-  </section>
 
-  <section id="profile-new-tweet">
-  <h2>Send new Tweet:</h2>
-  <%= render 'messages/form' %>
-  </section>
+<!--Pane container-->
+<div class="col-md-9">
+<section id="profile-messages">
+  <!--Pane Nav Tabs-->
+  <ul class="nav nav-tabs right-to-left">
+
+    <li class="active"><a href="#all-messages" data-toggle="tab"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp; All Messages </a></li>
+
+    <li><a href="#filtered-messages" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Filtered Messages</a></li>
+
+    <li><a href="#new-tweet" data-toggle="tab"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; New Tweet</a></li>    
+
+  </ul>
+
+  <!--Panes-->
+
+  <!--All Messages-->
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="all-messages">
+      <h4>All Messages: <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %></h4>
+      
+        <% @messages.each do |i| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          by <b><%=i.author%></b>
+          </div><!--end_.panel-heading-->
+          <div class="panel-body">
+            <%=i.body%>
+          </div><!--end_panel-body-->
+        </div><!--end_.panel panel-default-->
+        <% end %>
+      
+    
+    <%= link_to refresh_path, class: "btn btn-info" do %>
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+    <% end %> 
+
+    </div>
+
+
+  <!--Filtered Messages-->
+    <div class="tab-pane fade" id="filtered-messages">
+      <h4>Filtered Messages:</h4>
+      
+        <% @filtered_messages.each do |i| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <%=i.author%>
+          </div><!--end_.panel-heading-->
+          <div class="panel-body">
+            <%=i.body%>
+          </div><!--end_panel-body-->
+        </div><!--end_.panel panel-default-->
+
+        <% end %>
+      
+    </div>
+
+    <div class="tab-pane fade" id="new-tweet">
+      <h4>New Tweet:</h4>
+      <%= render 'messages/form' %>
+    </div>
+          
+  </div><!-- tab content -->
+
+
+</section><!--end_#profile-messages-->
+</div><!--end_col-md-9-->
+
+
 
     
 </div><!--end-.col-md-4-->
 
 <section id="profile-feed">
-  <div class="col-md-4">
+
     <h2>All Messages:</h2>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
 
