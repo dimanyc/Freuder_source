@@ -20,27 +20,18 @@ class MessagesController < ApplicationController
 		redirect_to user_path(current_user)
 	end
 
-	# Read 
-	def refresh # loads new data from Twitter
-		@tweets = $client.home_timeline
 
+	# Read
+	def index 
+		@messages = Message.all
+	end
+
+	def show
 		
-		if @tweets.each do |tweet|
-				Message.create( body:tweet.text, author:tweet.user.screen_name)
-			end	# @tweets.each do |tweet|
+	end
 
-			redirect_to user_path(current_user)	
-			flash[:notice] = "Message feed has been updated"
-
-		else
-
-			flash[:alert] = "Problem reloading the message feed"
-		end
-		
-	end	
 
 	# Update
-
 	def analyze # crawls through new tweets with current_user.filters 
 		@messages = Message.all
 
@@ -50,7 +41,6 @@ class MessagesController < ApplicationController
 				if 	filter.evaluate_message(message)
 						filter.messages << message
 						flash[:notice] = 'Found messages that are mathing your tags' 
-
 				else
 					respond_to do |format|
 						format.html { flash[:notice] = 'No new messages are matching any of your tags' }
@@ -62,7 +52,19 @@ class MessagesController < ApplicationController
 
 		redirect_to user_path(current_user)
 
-	end # def analyze	
+	end # def analyze
+
+	def refresh # loads new data from Twitter
+		@messages = Message.refresh_tweets
+		
+		if @messages
+			redirect_to user_path(current_user)	
+			flash[:notice] = "Message feed has been updated"
+		else
+			flash[:alert] = "Problem reloading the message feed"
+		end
+		
+	end			
 
 	# Destroy
 	def destroy
@@ -81,8 +83,6 @@ class MessagesController < ApplicationController
 	# 		if @message.save
 	# 			$twitter.update(@message)
 				# current_user.filters.each do |filter|
-					
-
 				# 	if 	filter.evaluate_message(@message)
 				# 			filter.messages << @message
 				# 			flash[:notice] = 'Message matches one or more of your filters' 
@@ -92,25 +92,12 @@ class MessagesController < ApplicationController
 				# 			format.json { render json: @message.errors, status: :unprocessable_entity }
 				# 		end
 				# 	end
-				
-
 				# end
 	# 			redirect_to user_path(current_user)
 	# 		end
 			
 
 	# end
-
-
-	# Read
-	def index 
-		@messages = Message.all
-	end
-
-	def show
-		
-	end
-
 
 	# Strong Params 
 	private 

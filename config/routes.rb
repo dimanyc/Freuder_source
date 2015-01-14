@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:destroy], as: :logout
 
-  root 'home#index', as: 'home'
+  root 'home#index', as: 'home', layout: 'false'
   match 'auth/twitter/callback', to: 'sessions#create', via: [:get, :post]
 
   # Message Control

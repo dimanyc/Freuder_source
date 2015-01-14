@@ -7,15 +7,14 @@ class Message < ActiveRecord::Base
 
 
 	# Model Methods
-	def save_tweets_to_messages(message)
 
-		message = Message.class
+	def self.refresh_tweets
+		tweets = $client.home_timeline
 
-		@tweets = $client.home_timeline
-
-		@tweets.each do |tweet|
-				message.create( body:tweet.text, author:tweet.user.screen_name)
+		if tweets
+			tweets.each do |tweet|
+				Message.create( body:tweet.text, author:tweet.user.screen_name)
+			end
 		end	# @tweets.each do |tweet|
-
-	end # def save_tweets_to_messages
+	end
 end
