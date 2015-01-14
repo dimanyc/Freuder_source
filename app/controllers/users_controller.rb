@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 	def show
 		@messages = Message.all.order! 'created_at ASC'
-		@filtered_messages = Filter.find_by(user_id: current_user.id).messages
+		#@filtered_messages = Filter.find_by(user_id: current_user.id).messages
 		@user_filters = Filter.where(user_id: current_user.id)
 		@image = current_user.image_url.gsub!("_normal","")
 		@message = Message.new

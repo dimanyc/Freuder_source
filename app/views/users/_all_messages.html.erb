@@ -1,0 +1,25 @@
+<% if @messages == [] %>
+		<div class="well">You don't have any saved messages yet. If this is your first time here, please click on Refresh button below, or use <%=link_to 'this',refresh_path %> link.</div>
+
+    <%= link_to refresh_path, class: "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+    <% end %> 
+
+<% else %>
+
+        <% @messages.each do |i| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          by <b><%=i.author%></b>
+          </div><!--end_.panel-heading-->
+          <div class="panel-body">
+            <%=i.body%>
+          </div><!--end_panel-body-->
+        </div><!--end_.panel panel-default-->
+        <% end %>
+      
+    
+    <%= link_to refresh_path, class: "btn btn-info" do %>
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
+    <% end %> 
+<% end %>    

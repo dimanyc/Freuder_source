@@ -1,0 +1,21 @@
+<% if @messages.count == 0 && @filtered_messages == [] %>
+		<div class="well">Please <%=link_to 'load your Tweets',analyze_path %> to be able to filter through them</div>
+<% elsif @filtered_messages == [] && @messages.count >= 1 %>
+		<div class="well">Your "Filtered Messages" queue is currently empty. Please <%=link_to 'filter your current feed',analyze_path %> or adjust your tags</div>
+<% else %>
+        <% @filtered_messages.each do |i| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <%=i.author%>
+          </div><!--end_.panel-heading-->
+          <div class="panel-body">
+            <%=i.body%>
+          </div><!--end_panel-body-->
+        </div><!--end_.panel panel-default-->
+        <% end %>
+	   	
+	   	<%= link_to analyze_path, class: "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
+    	<% end %>         
+
+<% end %>

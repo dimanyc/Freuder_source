@@ -43,21 +43,7 @@
     <div class="tab-pane fade active in" id="all-messages">
       <h4>All Messages: <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %></h4>
       
-        <% @messages.each do |i| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          by <b><%=i.author%></b>
-          </div><!--end_.panel-heading-->
-          <div class="panel-body">
-            <%=i.body%>
-          </div><!--end_panel-body-->
-        </div><!--end_.panel panel-default-->
-        <% end %>
-      
-    
-    <%= link_to refresh_path, class: "btn btn-info" do %>
-        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
-    <% end %> 
+      <%= render 'all_messages' %>
 
     </div>
 
@@ -66,17 +52,7 @@
     <div class="tab-pane fade" id="filtered-messages">
       <h4>Filtered Messages:</h4>
       
-        <% @filtered_messages.each do |i| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          <%=i.author%>
-          </div><!--end_.panel-heading-->
-          <div class="panel-body">
-            <%=i.body%>
-          </div><!--end_panel-body-->
-        </div><!--end_.panel panel-default-->
-
-        <% end %>
+      <%= render 'filtered_messages' %>
       
     </div>
 
