@@ -6,10 +6,12 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-		@message = Message.create(body: @message.body)
+		@new_message = Message.new(body: params[:body])
 
-		if  @message
-			$client.update(@message.body)
+
+
+		if  @new_message.save
+			$client.update("#{@new_message.body}")
 			flash[:notice] = "Message Sent"
 
 		else
