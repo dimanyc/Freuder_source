@@ -24,7 +24,7 @@ class FiltersController < ApplicationController
 	private
 
 	def filter_params
-		params.require(:filter).permit(:name,:description,:slips,:user_id)
+		params.require(:filter).permit(:name,:description,:slips,:user_id,:slipped_count)
 	end
 
 

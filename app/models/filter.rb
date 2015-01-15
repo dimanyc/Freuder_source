@@ -12,7 +12,9 @@ class Filter < ActiveRecord::Base
 	# Model-Level Methods:
 
 	def evaluate_message(message)
+		@message_id = message.id
 		@message_slipped = message.slipped
+		@message_slipped_count = message.slipped_count
 		@message_body = message.body.downcase.gsub(/[^a-z0-9\s]/i, '')
 		@slips = self.slips.downcase.split(", ")
 
@@ -23,16 +25,32 @@ class Filter < ActiveRecord::Base
 
 				if 	@slips.all? { |slip| @message_body.include?(slip) }
 					@message_slipped << @slips.to_s.gsub(/[^a-z0-9\s]/i, '')
+					self.messages << message
+
+					unless @message_slipped.include?(slip) || @message_slipped == ""
+						@message_slipped_count
+						
+					end
+
 					return true
+					
 				else
 					return false
 				end# if @slips.all?				
 
-			else
+			else # if slip.count is 1 
 
 				if 	@slips.any? { |slip| @message_body.include?(slip) }
 					@message_slipped << slip
+					self.messages << message
+					
+					unless @message_slipped.include?(slip) || @message_slipped == ""
+						@message_slipped_count += 1
+						
+					end
+
 					return true
+					
 				else
 					return false
 				end# if @slips.any?

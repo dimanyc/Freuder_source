@@ -47,13 +47,14 @@ class MessagesController < ApplicationController
 
 		@messages.each do |message|
 			current_user.filters.each do |filter|
-				filter.filtered_message_ids ||= ""
+				filter.filtered_message_ids ||= []
 				message.slipped ||= ""
 				if 	filter.evaluate_message(message)
+					#filter.slipped_count += 1 
 					flash[:notice] = "Some message(s) matched your tags"
 						filter.messages << message
 						current_user.messages << message
-						filter.filtered_message_ids + message.id.to_s
+						filter.filtered_message_ids << message.id.to_s
 						#message.slipped << slip
 	 					filter.save
 				else

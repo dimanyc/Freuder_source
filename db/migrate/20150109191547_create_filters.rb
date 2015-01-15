@@ -7,6 +7,7 @@ class CreateFilters < ActiveRecord::Migration
     	t.text :description
     	t.text :slips
       t.string :filtered_message_ids
+      t.integer :slipped_count, default: 0
       t.timestamps
     end
   end

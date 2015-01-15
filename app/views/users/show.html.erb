@@ -13,7 +13,9 @@
     <ul class="list-group">
     <% @user_filters.each do |i| %>
       <li class="list-group-item">
-        <span class="badge"><%=i.filtered_message_ids%></span>
+
+        <span class="badge green"><%=i.slipped_count%></span>
+
         <%=i.name%>
 
       </li>
@@ -21,7 +23,7 @@
     </ul>
 
    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag
+    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Create New Tag
     <% end %>
   </section>    
 </div><!--end_col-md-3-->    
