@@ -1,33 +1,37 @@
-<%=form_for(@filter) do |f| %>
-	<% if @filter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@filter.errors.count, "error") %> prohibited this filter from being saved:</h2>
+  <h2>Create New Tag:</h2>
 
-      <ul>
-      <% @filter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div class="panel panel-default">
+    <div class="panel-body"> 
+      <%= form_for(@filter) do |f| %>
+      <% if @filter.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@filter.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+          <ul>
+          <% @filter.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="form-group">
+        <%= f.label :name,"Name:" %><br/>
+        <%= f.text_field :name, class: "form-control", placeholder: "SEO Filter" %>
+      </div><!--end_.form-group-->
+
+      <div class="form-group">
+        <%= f.label :slips,"Slips (comma-separated):" %><br/>
+        <%= f.text_area :slips, class: "form-control", placeholder: "i.e. slip1, slip2, slip3" %> 
+      </div><!--end_.form-group-->
+
+      <%= f.label :description,"Description:" %><br/>
+      <%= f.text_area :description, class: "form-control counted", name: "message", placeholder: "Type in tag description (optional)", rows:"4", style: "margin-bottom:10px;" %>    
+
+      <%= f.submit class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-tag" aria-hidden="true"> Create new tag
+      <% end %>
+
+      <%end%>
     </div>
-  <% end %>
-	
-	<div class="field">
-		<%= f.label :name,"Name:" %><br/>
-		<%= f.text_field :name %>
-	</div>
-
-	<div class="field">
-		<%= f.label :description,"Description:" %><br/>
-		<%= f.text_field :description %>
-	</div>
-
-	<div class="field">
-		<%= f.label :slips,"Slips:" %><br/>
-		<%= f.text_area :slips %>	
-	</div>
-
-	<div class="actions">
-		<%= f.submit "#{params[:action].capitalize}"%>
-	</div>  
-
-<%end%>
+  </div>

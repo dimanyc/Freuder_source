@@ -1,26 +1,27 @@
-<div class="panel panel-default">
-  <div class="panel-body"> 
-    <%=form_for(@message, {controller: "messages", action:"post_new_tweet"}) do |f| %>
-    <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+  <div class="panel panel-default">
+          <div class="panel-body"> 
+            <%= form_for(@message) do |f| %>
+            <% if @message.errors.any? %>
+              <div id="error_explanation">
+              <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
-      <ul>
-        <% @message.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
+                <ul>
+                <% @message.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
 
 
-      <%= f.text_area :body, class: "form-control counted", name: "message", placeholder: "Type in your message", rows:"4", style: "margin-bottom:10px;" %>    
-      <h6 class="pull-right" id="counter">320 characters remaining</h6>      
+            <%= f.text_area :body, class: "form-control counted", name: "message", placeholder: "Type in your message", rows:"4", style: "margin-bottom:10px;" %>    
+            <h6 class="pull-right" id="counter">320 characters remaining</h6>      
 
-      <%= f.submit "Post New Tweet", class: "btn btn-info",action: "post_new_tweet"%>
+            <%#= f.submit "Post New Tweet", class: "btn btn-info",action: "post_new_tweet"%>
+            <%= f.submit "post new tweet" %>
 
-    <%end%>
+            <%end%>
+          </div>
   </div>
-</div>
 
 

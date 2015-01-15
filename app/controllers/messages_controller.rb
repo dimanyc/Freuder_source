@@ -6,11 +6,10 @@ class MessagesController < ApplicationController
 	end
 
 	def create
-		@message = Message.new(message_params)
+		@message = Message.create(body: @message.body)
 
-		if  @message.save
+		if  @message
 			$client.update(@message.body)
-			current_user.messages << @message
 			flash[:notice] = "Message Sent"
 
 		else
@@ -19,9 +18,6 @@ class MessagesController < ApplicationController
 
 		redirect_to user_path(current_user)
 	end
-
-
-
 
 
 	# Read
@@ -43,12 +39,10 @@ class MessagesController < ApplicationController
 			
 				if 	filter.evaluate_message(message)
 						filter.messages << message
-						flash[:notice] = 'Found messages that are mathing your tags' 
+						current_user.messages << message
+	 				flash[:notice] = "Some message(s) matched your tags"
 				else
-					respond_to do |format|
-						format.html { flash[:notice] = 'No new messages are matching any of your tags' }
-						format.json { render json: @message.errors, status: :unprocessable_entity }
-					end # respond_to
+					flash[:alert] = "No new messages matched your tags."
 				end # filter.evaluate_message
 			end # current_user.filters.each do |filter|
 		end	# @messages.each 
@@ -78,25 +72,11 @@ class MessagesController < ApplicationController
 	end
 
 
-	def post_new_tweet
-		@message = Message.new(message_params)
-
-		if @message.save
-			current_user.messages << @message
-			$client.update(@message.body)
-			flash[:notice] = "Message has been posted!"
-			redirect_to user_path(current_user)
-		else
-			flash[:alert] = "Problem posting a new Tweet. Try again later"
-		end
-	end
-
-
 	# Strong Params 
 	private 
 
 	def message_params
-		params.require(:message).permit(:body,:author,:hashtags,:author_image_url,:replies,:mentions)
+		params.require(:message).permit(:body,:author,:hashtags,:author_image_url,:replies,:mentions,:messageable_id,:messageable_type)
 	end
 
 

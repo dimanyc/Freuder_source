@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 		@user = User.from_omniauth(env["omniauth.auth"])
 		session[:user_id] = @user.id 
 		redirect_to user_path(@user)
-		flash[:notice] = "Signd In!"
+		flash[:notice] = "Signed In!"
 	end
 
 	def destroy

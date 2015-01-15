@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/refresh' => 'messages#refresh', as: 'refresh'
   get '/analyze' => 'messages#analyze', as: 'analyze'
   get '/destroy' => 'messages#destroy', as: 'destroy'
-
+  get '/post-new-tweet' => 'messages#create', as: 'post_new_tweet'
   
 
 

@@ -39,9 +39,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Install Twitter API gem 
 gem 'twitter'
 
-# Extraction of Twitter mentions, links and hashtags
-gem 'twitter-text' 
-
 gem 'certified'
 gem 'omniauth-twitter'
 gem "binding_of_caller"

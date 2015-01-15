@@ -11,6 +11,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
           by <b><%=i.author%></b>
+            <div class="pull-right">
+            <%= image_tag(i.author_image_url, class: "author-pic img-circle") %>
+            </div>
+
           </div><!--end_.panel-heading-->
           <div class="panel-body">
             <%=i.body%>
@@ -22,4 +26,7 @@
     <%= link_to refresh_path, class: "btn btn-info" do %>
         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh
     <% end %> 
+    <%= link_to analyze_path, class: "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
+      <% end %>        
 <% end %>    
