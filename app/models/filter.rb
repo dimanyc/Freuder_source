@@ -14,7 +14,7 @@ class Filter < ActiveRecord::Base
 	def evaluate_message(message)
 		@message_id = message.id
 		@message_slipped = message.slipped
-		@message_slipped_count = message.slipped_count
+		#@message_slipped_count = message.slipped_count
 		@message_body = message.body.downcase.gsub(/[^a-z0-9\s]/i, '')
 		@slips = self.slips.downcase.split(", ")
 
@@ -27,10 +27,11 @@ class Filter < ActiveRecord::Base
 					@message_slipped << @slips.to_s.gsub(/[^a-z0-9\s]/i, '')
 					self.messages << message
 
-					unless @message_slipped.include?(slip) || @message_slipped == ""
-						@message_slipped_count
+					
+					# unless @message_slipped.include?(slip) || @message_slipped == ""
+					# 	@message_slipped_count
 						
-					end
+					# end
 
 					return true
 					
@@ -44,10 +45,10 @@ class Filter < ActiveRecord::Base
 					@message_slipped << slip
 					self.messages << message
 					
-					unless @message_slipped.include?(slip) || @message_slipped == ""
-						@message_slipped_count += 1
+					# unless @message_slipped.include?(slip) || @message_slipped == ""
+					# 	@message_slipped_count += 1
 						
-					end
+					# end
 
 					return true
 					

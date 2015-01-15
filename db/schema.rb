@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150109191547) do
   end
 
   create_table "messages", force: true do |t|
-    t.text     "body",                         null: false
+    t.text     "body",             null: false
     t.string   "author"
     t.string   "hashtags"
     t.string   "author_image_url"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150109191547) do
     t.string   "mentions"
     t.string   "urls"
     t.string   "slipped"
-    t.integer  "slipped_count",    default: 0
     t.integer  "messageable_id"
     t.string   "messageable_type"
     t.datetime "created_at"

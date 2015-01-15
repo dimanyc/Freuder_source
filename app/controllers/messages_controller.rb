@@ -56,7 +56,7 @@ class MessagesController < ApplicationController
 						current_user.messages << message
 						filter.filtered_message_ids << message.id.to_s
 						#message.slipped << slip
-	 					filter.save
+	 					#filter.save
 				else
 					flash[:alert] = "No new messages matched your tags."
 				end # filter.evaluate_message
