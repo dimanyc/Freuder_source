@@ -1,7 +1,13 @@
-
+<section id="home-intro">
 <div class="col-md-12 text-center">
 <%=image_tag('freuder-logo.png',class: "img-circle") %>
 <h1>Freuder</h1>
-<%=link_to "Sign in with Twitter", "auth/twitter" %>
+<%= link_to "auth/twitter", class: "btn btn-lg btn-default" do %>
+
+<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign in with Twitter
+
+<% end %>
+
 </div>
+</section>
 

@@ -78,9 +78,23 @@ a.navbar-brand
 
 .author-pic{margin-top:-15px;margin-bottom:-14px;width:35px; height:35px;}
 
+/*Home*/
+section#home-intro
+				{
+					margin-top:172px;
+						h1
+							{
+								font-family: "Times New Roman", serif;
+								font-size:5em;
+										-webkit-text-shadow: rgba(147,149,152,1) 0 0 3px;
+		text-shadow: rgba(147,149,152,1) 0 0 3px;
+								
+							}
+				}
+
 /*Profile*/
 
-section#profile-image,section#profile-messages{margin-top: 72px;}
+section#profile-image,section#profile-messages,section#new-filter{margin-top: 72px;}
 
 /*Tabbed Nav*/
 ul.right-to-left

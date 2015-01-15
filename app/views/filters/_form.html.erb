@@ -1,4 +1,4 @@
-  <h2>Create New Tag:</h2>
+  <h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag:</h2>
 
   <div class="panel panel-default">
     <div class="panel-body"> 
@@ -25,13 +25,17 @@
         <%= f.text_area :slips, class: "form-control", placeholder: "i.e. slip1, slip2, slip3" %> 
       </div><!--end_.form-group-->
 
+      <div class="form-group">
       <%= f.label :description,"Description:" %><br/>
       <%= f.text_area :description, class: "form-control counted", name: "tag", placeholder: "Type in tag description (optional)", rows:"4", style: "margin-bottom:10px;" %>    
+      </div><!--end_.form-group-->
 
+      <div class="form-group">
       <%= f.submit class: "btn btn-primary" do %>
-        <span class="glyphicon glyphicon-tag" aria-hidden="true"> Create new tag
+        <span class="glyphicon glyphicon-tag" aria-hidden="true"> Create new tag </span>
       <% end %>
-
+      </div><!--end_.form-group-->
+      
       <%end%>
     </div>
   </div>

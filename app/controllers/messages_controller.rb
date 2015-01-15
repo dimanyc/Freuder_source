@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
 
 		if  @message.save
 			$client.update(@message.body)
+			current_user.messages << @message 
 			flash[:notice] = "Message Sent"
 
 		elsif @message.body == nil
@@ -46,11 +47,15 @@ class MessagesController < ApplicationController
 
 		@messages.each do |message|
 			current_user.filters.each do |filter|
-			
+				filter.filtered_message_ids ||= ""
+				message.slipped ||= ""
 				if 	filter.evaluate_message(message)
+					flash[:notice] = "Some message(s) matched your tags"
 						filter.messages << message
 						current_user.messages << message
-	 				flash[:notice] = "Some message(s) matched your tags"
+						filter.filtered_message_ids + message.id.to_s
+						#message.slipped << slip
+	 					filter.save
 				else
 					flash[:alert] = "No new messages matched your tags."
 				end # filter.evaluate_message
@@ -86,7 +91,7 @@ class MessagesController < ApplicationController
 	private 
 
 	def message_params
-		params.require(:message).permit(:body,:author)
+		params.require(:message).permit(:body,:author, :filtered_message_ids)
 	end
 
 

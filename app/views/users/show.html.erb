@@ -13,7 +13,7 @@
     <ul class="list-group">
     <% @user_filters.each do |i| %>
       <li class="list-group-item">
-        <span class="badge"><%=i.messages.count%></span>
+        <span class="badge"><%=i.filtered_message_ids%></span>
         <%=i.name%>
 
       </li>

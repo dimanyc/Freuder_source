@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150109191547) do
     t.string   "name"
     t.text     "description"
     t.text     "slips"
+    t.string   "filtered_message_ids"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

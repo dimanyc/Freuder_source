@@ -6,6 +6,7 @@ class CreateFilters < ActiveRecord::Migration
     	t.string :name 
     	t.text :description
     	t.text :slips
+      t.string :filtered_message_ids
       t.timestamps
     end
   end

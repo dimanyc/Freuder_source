@@ -8,7 +8,7 @@ class CreateMessages < ActiveRecord::Migration
     	t.string :replies, null: true
     	t.string :mentions, null: true
       t.string :urls, null: true
-      t.string :slipped
+      t.string :slipped, null: true
     	t.references :messageable, polymorphic: true, index: true 
   	
       t.timestamps
