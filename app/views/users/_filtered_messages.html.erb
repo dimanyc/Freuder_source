@@ -1,14 +1,3 @@
-<% @filtered_messages.each do |i| %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-  <%=i.author%>
-  </div><!--end_.panel-heading-->
-  <div class="panel-body">
-    <%=i.body%>
-  </div><!--end_panel-body-->
-</div><!--end_.panel panel-default-->
-<% end %>
-
 
 <% if @messages.count < 0 %>
 		<div class="well">Please <%=link_to 'load your Tweets',analyze_path %> to be able to filter through them</div>

@@ -12,14 +12,17 @@
                 </ul>
               </div>
             <% end %>
+            
+            <div class="form-group">
+              <%= f.label :body,"Text:" %><br/>
 
 
-            <%= f.text_area :body, class: "form-control counted", name: "message", placeholder: "Type in your message", rows:"4", style: "margin-bottom:10px;" %>    
+            <%= f.text_area :body, class: "form-control counted", placeholder: "Type in your message", rows:"4", style: "margin-bottom:10px;" %>    
             <h6 class="pull-right" id="counter">320 characters remaining</h6>      
 
             <%#= f.submit "Post New Tweet", class: "btn btn-info",action: "post_new_tweet"%>
             <%= f.submit "post new tweet" %>
-
+            </div><!--end_.form-group-->            
             <%end%>
           </div>
   </div>

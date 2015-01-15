@@ -2,7 +2,7 @@ class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
     	t.text :body, unique: true, null: false
-    	t.string :author, null: false
+    	t.string :author, null: true
     	t.string :hashtags, null: true
     	t.string :author_image_url, null: true
     	t.string :replies, null: true

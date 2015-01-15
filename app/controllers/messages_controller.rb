@@ -5,15 +5,23 @@ class MessagesController < ApplicationController
 		@message = Message.new
 	end
 
+
+	# def create
+	# 	Message.post_tweet(params["body"])
+	# 	redirect_to user_path(current_user)
+	# end
+
 	def create
-		@new_message = Message.new(body: params[:body])
+		@message = Message.new(message_params)
 
 
 
-		if  @new_message.save
-			$client.update("#{@new_message.body}")
+		if  @message.save
+			$client.update(@message.body)
 			flash[:notice] = "Message Sent"
 
+		elsif @message.body == nil
+			flash[:alert] = "Cannot send an empty message"
 		else
 			flash[:alert] = "Problem sending your message"
 		end
@@ -78,7 +86,7 @@ class MessagesController < ApplicationController
 	private 
 
 	def message_params
-		params.require(:message).permit(:body,:author,:hashtags,:author_image_url,:replies,:mentions,:messageable_id,:messageable_type)
+		params.require(:message).permit(:body,:author)
 	end
 
 
