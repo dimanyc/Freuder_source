@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150109191547) do
     t.string   "name"
     t.text     "description"
     t.text     "slips"
-    t.string   "filtered_message_ids"
+    t.string   "filtered_message_ids", default: ""
     t.integer  "slipped_count",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"

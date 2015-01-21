@@ -20,6 +20,17 @@ class FiltersController < ApplicationController
 	def show
 		@filter = Filter.find(params[:id])
 	end
+	
+	def destroy
+		@filter = Filter.find(params[:id])
+		if @filter.destroy
+			flash[:notice] = "Tag has been removed"
+
+		else
+			flash[:alert] = "Problem!"
+		end
+		redirect_to home_path
+	end	
 
 	private
 

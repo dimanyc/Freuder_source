@@ -2,29 +2,35 @@
 
   <!--Profile Image-->
   <section id="profile-image">
+     <div class="thumbnail">
+
     <%= image_tag(@image) %>
-    <h1>@<%= current_user.username %></h1>
+      <div class="caption">
+      <h3><span class="glyphicon glyphicon-user" aria-hidden="true"> </span> <%= current_user.username %></h3>
+      </div><!--end_.caption-->
+    </div><!--end_.thumbnail-->
   </section>
 
   <!--Tags-->
   <section id="user-tags">
     <h4>User Tags:</h4>
-
-    <ul class="list-group">
     <% @user_filters.each do |i| %>
-      <li class="list-group-item">
-
-        <span class="badge green"><%=i.slipped_count%></span>
-
-        <%=i.name%>
-
-      </li>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b class="panel-title">Name: </b>"<%= i.name %>"<span class="badge pull-right"><%= link_to filter_path(i), method: "delete", data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?"} do %><span class="list-group-addon glyphicon glyphicon-remove"></span><%end%></span></div>
+      <div class="panel-body">
+        <b>Tweets "slipped": </b><span class="badge green"><%= @color=i.messages.uniq.count if i.messages.uniq.count > 1%></span>
+      </div>  <!--end_panel-body-->
+     
+    </div><!--end_.panel-->
     <% end %>
-    </ul>
 
-   <%= link_to new_user_filter_path(current_user), class: "btn btn-primary" do %>
-    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Create New Tag
+    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "#filter-form-toggler" do %>
+    <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span>  Create New Tag
     <% end %>
+    <div id="filter-form-toggle">
+    <%= render 'filters/form' %>
+    </div>
+  
   </section>    
 </div><!--end_col-md-3-->    
 
@@ -48,8 +54,19 @@
   <!--All Messages-->
   <div class="tab-content">
     <div class="tab-pane fade active in" id="all-messages">
-      <h4>All Messages: <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %> <%=link_to destroy_path do %> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All <% end %></h4>
+      <div class="panel-heading">
       
+        <b>All Messages:</b>
+    
+        <div class="pull-right">
+          <span class="badge">
+            <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %>
+          </span>
+          <span class="badge">
+           <%=link_to destroy_all_messages_path do %> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All <% end %>
+          </span>
+        </div><!--end_.pull-right-->
+      </div><!--end_.panel-heading-->
       <%= render 'all_messages' %>
 
     </div><!--end_tab-pane-->
@@ -57,7 +74,16 @@
 
   <!--Filtered Messages-->
     <div class="tab-pane fade" id="filtered-messages">
-      <h4>Filtered Messages: <%=link_to analyze_path do %> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter Messages <% end %></h4>
+          <div class="panel-heading">
+      <b>Filtered Messages:</b>
+        <div class="pull-right">
+          <span class="badge">
+          <%=link_to analyze_path do %> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter Messages <% end %>
+          </span><!--end_.badge-->
+        
+        </div><!--end_pull-right-->
+      </div><!--end_.panel-heading-->
+       
       
       <%= render 'filtered_messages' %>
       

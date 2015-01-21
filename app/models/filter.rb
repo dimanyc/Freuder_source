@@ -14,6 +14,7 @@ class Filter < ActiveRecord::Base
 	def evaluate_message(message)
 		@message_id = message.id
 		@message_slipped = message.slipped
+		@filter_message_ids = self.filtered_message_ids
 		#@message_slipped_count = message.slipped_count
 		@message_body = message.body.downcase.gsub(/[^a-z0-9\s]/i, '')
 		@slips = self.slips.downcase.split(", ")
@@ -25,6 +26,9 @@ class Filter < ActiveRecord::Base
 
 				if 	@slips.all? { |slip| @message_body.include?(slip) }
 					@message_slipped << @slips.to_s.gsub(/[^a-z0-9\s]/i, '')
+
+					self.filtered_message_ids << message.id
+
 					self.messages << message
 
 					
