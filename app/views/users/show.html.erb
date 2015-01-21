@@ -18,7 +18,7 @@
     <div class="panel panel-default">
       <div class="panel-heading"><b class="panel-title">Name: </b>"<%= i.name %>"<span class="badge pull-right"><%= link_to filter_path(i), method: "delete", data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?"} do %><span class="list-group-addon glyphicon glyphicon-remove"></span><%end%></span></div>
       <div class="panel-body">
-        <b>Tweets "slipped": </b><span class="badge green"><%= @color=i.messages.uniq.count if i.messages.uniq.count > 1%></span>
+        <b>Tweets "slipped": </b><span class="badge green"><%= i.messages.uniq.count if i.messages.uniq.count >= 1%></span>
       </div>  <!--end_panel-body-->
      
     </div><!--end_.panel-->

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150109191547) do
     t.string   "name"
     t.text     "description"
     t.text     "slips"
-    t.string   "filtered_message_ids", default: ""
+    t.text     "filtered_message_ids"
     t.integer  "slipped_count",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,14 +33,17 @@ ActiveRecord::Schema.define(version: 20150109191547) do
     t.string   "replies"
     t.string   "mentions"
     t.string   "urls"
-    t.string   "slipped"
-    t.integer  "messageable_id"
-    t.string   "messageable_type"
+    t.text     "slipped"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "processor_id"
+    t.string   "processor_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["messageable_id", "messageable_type"], name: "index_messages_on_messageable_id_and_messageable_type"
+  add_index "messages", ["owner_id", "owner_type"], name: "index_messages_on_owner_id_and_owner_type"
+  add_index "messages", ["processor_id", "processor_type"], name: "index_messages_on_processor_id_and_processor_type"
 
   create_table "users", force: true do |t|
     t.string   "fname"

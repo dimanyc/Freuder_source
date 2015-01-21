@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	
 	#Active Relations:
 	has_many :filters
-	has_many :messages, as: :messageable
+	has_many :messages, as: :owner
 	
 	#Model Methods: 
 	def self.from_omniauth(auth)
