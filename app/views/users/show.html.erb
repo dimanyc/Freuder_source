@@ -13,21 +13,29 @@
 
   <!--Tags-->
   <section id="user-tags">
-      <ul class="list-group" id="tag-list"><% @user_filters.each_with_index do |i,n| %>
-        <li class="list-group-item tag">
-          <span class="badge green"><%= i.messages.uniq.count if i.messages.uniq.count >= 1%></span>
-          <%= i.name %>
-          
-          <span class="badge pull-right">
-          <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting..."}, remote: true  do %>
-          <span class="list-group-addon glyphicon glyphicon-remove"></span><%end%>
-          </span>
+    <div class="list-group"><% @user_filters.each_with_index do |i,n| %> 
+      <div class="list-group-item clearfix user-tag" data-id="<%=n%>">
 
-        </li><% end %>
-      </ul>
+        <span class="pull-left">
+          <span class="list-group-addon glyphicon glyphicon-tag"></span> <%= i.name.capitalize %>
+        </span>
 
-    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "#filter-form-toggler", data: { disable_with: "Loading..." }, remote: true do %>
-    <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span>  Create New Tag
+        <span class="pull-right">
+          <% if i.messages.uniq.count >= 1 %>
+            <b class="badge green"><%= i.messages.uniq.count %></b>
+          <% end %>
+        </span>
+
+        <span class="pull-right delete-tag"><!-- use JS to hide on mouseout -->
+
+        <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting...", id:"#{n}"}, remote: true, class: "user-tag-delete" do %>
+          <b class="badge red"><span class="list-group-addon glyphicon glyphicon-remove"></span></b><%end%>
+        </span>
+      </div><% end %>
+    </div>
+
+    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "filter-form-toggler", data: {}, remote: true do %>
+    <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span> Create New Tag 
     <% end %>
     <div id="filter-form-toggle">
     <%= render 'filters/form' %>
@@ -38,14 +46,14 @@
 
 
 <!--Pane container-->
-<div class="col-md-9">
+<div class="col-md-9 col-lg-9 col-xl-9 col-sm-6 col-xs-6">
 <section id="profile-messages">
   <!--Pane Nav Tabs-->
   <ul class="nav nav-tabs right-to-left">
 
-    <li class="active"><a href="#all-messages" data-toggle="tab"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp; All Messages <span class="badge"><%=@messages.count%></span></a></li>
+    <li class="active"><a href="#all-messages" data-toggle="tab"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp; All Messages <span class="badge lightblue"><%=@messages.count%></span></a></li>
 
-    <li><a href="#filtered-messages" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Filtered Messages <span class="badge"><%=@filtered_messages.count%></span></a></li>
+    <li><a href="#filtered-messages" data-toggle="tab"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Filtered Messages <span class="badge lightblue"><%=@filtered_messages.count%></span></a></li>
 
     <li><a href="#new-tweet" data-toggle="tab"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp; New Tweet</a></li>    
 
@@ -64,7 +72,7 @@
           <span class="badge green">
             <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %>
           </span>
-          <span class="badge">
+          <span class="badge red">
            <%=link_to destroy_all_messages_path do %> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All <% end %>
           </span>
         </div><!--end_.pull-right-->

@@ -18,6 +18,12 @@ $redtext: #fff;
 $redbg: #d9534f;
 $redborder: #d43f3a;
 
+// Info coloring
+$lightbluetext: #fff;
+$lightbluebg: #5bc0de;
+$lightblueborder: #46b8da;
+
+
 
 /*Globals*/
 
@@ -82,7 +88,12 @@ a:hover, a:focus
 		background-color: $redbg;
 		border-color: $redborder;
 	}
-
+.badge.lightblue
+	{
+		color: $lightbluetext;
+		background-color: $lightbluebg;
+		border-color: $lightblueborder;
+	}
 
 /*Header*/
 header

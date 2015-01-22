@@ -33,7 +33,7 @@
 
       <!--Nav Profle-->
 
-      <p class="navbar-text navbar-right">
+      <p class="navbar-text navbar-right hidden-xs">
         <% unless session[:user_id] == nil && params[:controller] == 'home' && params[:action] == 'index'  %>
         <%= link_to logout_path(session[:user_id]), method: "delete" do %> 
         Hello, <%=current_user.username%>

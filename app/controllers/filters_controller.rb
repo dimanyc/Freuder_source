@@ -1,8 +1,11 @@
 class FiltersController < ApplicationController
 
 	def new 
-		sleep 0.2
 		@filter = Filter.new
+
+		respond_to do |format|
+			format.js{ }
+		end
 	end
 
 	def create
@@ -11,6 +14,7 @@ class FiltersController < ApplicationController
 			if @filter.save
 				current_user.filters << @filter
 				format.html { redirect_to user_path(current_user), notice: 'Filter has been created!' }
+				format.js {}
 			else
 				format.html { render :new,alert: "Problem adding your filter. Please double check your form" }
 				format.json { render json: @filter.errors, status: :unprocessable_entity }
@@ -23,7 +27,6 @@ class FiltersController < ApplicationController
 	end
 	
 	def destroy
-		sleep 0.2 
 		@filter = Filter.find(params[:id])
 		if @filter.destroy
 			flash[:notice] = "Tag has been removed"
@@ -31,7 +34,12 @@ class FiltersController < ApplicationController
 		else
 			flash[:alert] = "Problem!"
 		end
-		redirect_to home_path
+
+		respond_to do |format|
+			format.js{}
+			format.html	{ redirect_to home_path}	
+		end
+		
 	end	
 
 	private
