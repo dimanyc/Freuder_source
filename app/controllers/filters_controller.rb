@@ -1,6 +1,7 @@
 class FiltersController < ApplicationController
 
 	def new 
+		sleep 0.2
 		@filter = Filter.new
 	end
 
@@ -22,6 +23,7 @@ class FiltersController < ApplicationController
 	end
 	
 	def destroy
+		sleep 0.2 
 		@filter = Filter.find(params[:id])
 		if @filter.destroy
 			flash[:notice] = "Tag has been removed"

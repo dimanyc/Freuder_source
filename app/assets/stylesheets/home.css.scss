@@ -8,6 +8,17 @@ $grey: lightslategray;
 $greybg: whitesmoke;
 $highlight:crimson;
 
+// Success coloring
+$greentext: #fff;
+$greenbg: #5cb85c;
+$greenborder: #4cae4c;	
+
+// Warning coloring
+$redtext: #fff;
+$redbg: #d9534f;
+$redborder: #d43f3a;
+
+
 /*Globals*/
 
 html
@@ -59,9 +70,19 @@ a:hover, a:focus
 	}
 .glyphicon {font-size:.8em;}
 
-span.badge.green {
-    background-color:green!important;
-}
+.badge.green
+	{
+	    color: $greentext;
+		background-color: $greenbg;
+		border-color: $greenborder;
+	}
+.badge.red
+	{
+		color: $redtext;
+		background-color: $redbg;
+		border-color: $redborder;
+	}
+
 
 /*Header*/
 header

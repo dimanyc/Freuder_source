@@ -13,18 +13,20 @@
 
   <!--Tags-->
   <section id="user-tags">
-    <h4>User Tags:</h4>
-    <% @user_filters.each do |i| %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><b class="panel-title">Name: </b>"<%= i.name %>"<span class="badge pull-right"><%= link_to filter_path(i), method: "delete", data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?"} do %><span class="list-group-addon glyphicon glyphicon-remove"></span><%end%></span></div>
-      <div class="panel-body">
-        <b>Tweets "slipped": </b><span class="badge green"><%= i.messages.uniq.count if i.messages.uniq.count >= 1%></span>
-      </div>  <!--end_panel-body-->
-     
-    </div><!--end_.panel-->
-    <% end %>
+      <ul class="list-group" id="tag-list"><% @user_filters.each_with_index do |i,n| %>
+        <li class="list-group-item tag">
+          <span class="badge green"><%= i.messages.uniq.count if i.messages.uniq.count >= 1%></span>
+          <%= i.name %>
+          
+          <span class="badge pull-right">
+          <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting..."}, remote: true  do %>
+          <span class="list-group-addon glyphicon glyphicon-remove"></span><%end%>
+          </span>
 
-    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "#filter-form-toggler" do %>
+        </li><% end %>
+      </ul>
+
+    <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "#filter-form-toggler", data: { disable_with: "Loading..." }, remote: true do %>
     <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span>  Create New Tag
     <% end %>
     <div id="filter-form-toggle">
@@ -59,7 +61,7 @@
         <b>All Messages:</b>
     
         <div class="pull-right">
-          <span class="badge">
+          <span class="badge green">
             <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %>
           </span>
           <span class="badge">
@@ -77,7 +79,7 @@
           <div class="panel-heading">
       <b>Filtered Messages:</b>
         <div class="pull-right">
-          <span class="badge">
+          <span class="badge green">
           <%=link_to analyze_path do %> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter Messages <% end %>
           </span><!--end_.badge-->
         
