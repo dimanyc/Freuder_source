@@ -13,10 +13,11 @@ class FiltersController < ApplicationController
 		respond_to do |format|
 			if @filter.save
 				current_user.filters << @filter
-				format.html { redirect_to user_path(current_user), notice: 'Filter has been created!' }
+				format.html { redirect_to user_path(current_user), notice: "Filter has been created!" }
 				format.js {}
+				format.json { render json: @filter, status: :created, location: @user_tags }
 			else
-				format.html { render :new,alert: "Problem adding your filter. Please double check your form" }
+				format.html { render :new, alert: "Problem adding your filter. Please double check your form" }
 				format.json { render json: @filter.errors, status: :unprocessable_entity }
 			end
 		end
@@ -37,7 +38,7 @@ class FiltersController < ApplicationController
 
 		respond_to do |format|
 			format.js{}
-			format.html	{ redirect_to home_path}	
+			format.html	{ redirect_to home_path }	
 		end
 		
 	end	

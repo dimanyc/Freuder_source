@@ -13,35 +13,24 @@
 
   <!--Tags-->
   <section id="user-tags">
-    <div class="list-group"><% @user_filters.each_with_index do |i,n| %> 
-      <div class="list-group-item clearfix user-tag" data-id="<%=n%>">
 
-        <span class="pull-left">
-          <span class="list-group-addon glyphicon glyphicon-tag"></span> <%= i.name.capitalize %>
-        </span>
-
-        <span class="pull-right">
-          <% if i.messages.uniq.count >= 1 %>
-            <b class="badge green"><%= i.messages.uniq.count %></b>
-          <% end %>
-        </span>
-
-        <span class="pull-right delete-tag"><!-- use JS to hide on mouseout -->
-
-        <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting...", id:"#{n}"}, remote: true, class: "user-tag-delete" do %>
-          <b class="badge red"><span class="list-group-addon glyphicon glyphicon-remove"></span></b><%end%>
-        </span>
-      </div><% end %>
-    </div>
+    <h1>List_Style-Tags</h1>
+      <ul class="list-group" id="user-tags-list">
+        
+        <%= render @user_tags %>
+      
+      </ul><!--end_.list-group-->
 
     <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "filter-form-toggler", data: {}, remote: true do %>
     <span class="glyphicon glyphicon-tags" aria-hidden="true"> </span> Create New Tag 
     <% end %>
+
+    <!--Form-->
     <div id="filter-form-toggle">
     <%= render 'filters/form' %>
     </div>
   
-  </section>    
+  </section><!--end_user-tags-->   
 </div><!--end_col-md-3-->    
 
 
