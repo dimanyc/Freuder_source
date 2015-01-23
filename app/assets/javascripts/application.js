@@ -23,11 +23,7 @@ $(document).ready (function(){
 	});
  
 (function($) {
-    /**
-	 * attaches a character counter to each textarea element in the jQuery object
-	 * usage: $("#myTextArea").charCounter(max, settings);
-	 */
-	
+
 	$.fn.charCounter = function (max, settings) {
 		max = max || 100;
 		settings = $.extend({

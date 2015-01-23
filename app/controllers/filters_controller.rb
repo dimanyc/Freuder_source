@@ -39,6 +39,7 @@ class FiltersController < ApplicationController
 		respond_to do |format|
 			format.js{}
 			format.html	{ redirect_to home_path }	
+			format.json {}
 		end
 		
 	end	

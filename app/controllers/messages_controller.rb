@@ -49,9 +49,9 @@ class MessagesController < ApplicationController
 			current_user.filters.each do |filter|
 				
 				if 	filter.evaluate_message(message)
-					flash[:notice] = "Some message(s) matched your tags"
+					flash[:notice] = "Found #{current_user.messages.count} messages!"
 				else
-					flash[:alert] = "No new messages matched your tags."
+					flash[:alert] = "No interesting messages found"
 				end # filter.evaluate_message
 				
 			end # current_user.filters.each do |filter|
@@ -65,8 +65,9 @@ class MessagesController < ApplicationController
 		@messages = Message.refresh_tweets
 		
 		if @messages
-			redirect_to user_path(current_user)	
-			flash[:notice] = "Message feed has been updated"
+			respond_to do |format|
+				format.html{redirect_to user_path(current_user), notice: "Message feed has been updated!"}
+			end
 		else
 			flash[:alert] = "Problem reloading the message feed"
 		end

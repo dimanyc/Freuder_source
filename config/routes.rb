@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
   resources :users do 
-    resources :filters 
+    resources :filters, only: [:new,:create]
   end
   
   resources :messages
-  resources :filters 
+   resources :filters, only: [:show,:index,:create]
 
   resources :sessions, only: [:destroy], as: :logout
 

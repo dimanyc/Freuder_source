@@ -123,17 +123,28 @@ a.navbar-brand
 .author-pic{margin-top:-15px;margin-bottom:-14px;width:35px; height:35px;}
 
 /*Home*/
-section#home-intro
+
+section#homepageintro 
 				{
-					margin-top:172px;
-						h1
-							{
-								font-family: "Times New Roman", serif;
-								font-size:5em;
-										-webkit-text-shadow: rgba(147,149,152,1) 0 0 3px;
-		text-shadow: rgba(147,149,152,1) 0 0 3px;
-								
-							}
+					position:relative;
+					
+					div
+						{
+							
+    						position:absolute;
+    						top:50%;
+    						height:50%;
+    						margin-top:10%;;
+
+							h1
+								{
+									font-family: "Times New Roman", serif;
+									font-size:5em;
+									-webkit-text-shadow: rgba(147,149,152,1) 0 0 3px;
+									text-shadow: rgba(147,149,152,1) 0 0 3px;
+									
+								}
+						}
 				}
 
 /*Profile*/
@@ -150,6 +161,10 @@ section#profile-image
 							border-radius: 4px;
 						}
 					}
+section#homepageintro 
+	{
+
+	}					
 .list-grop-item .badge {line-height:1;}
 
 /*Tabbed Nav*/

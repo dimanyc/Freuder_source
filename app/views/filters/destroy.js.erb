@@ -1,7 +1,4 @@
-//$('div.user-tag').fadeOut(200).slideUp(200);
-//$(document).ready (function(){
 	
-	$(".user-tag-delete").data('id').on('ajax:complete',function(e)	{
-			$(".user-tag").data('id').slideUp(200).fadeOut(100)
+	$(".user-tag-delete").on('ajax:complete',function(e)	{
+			$(this).closest('li.user-tag').slideUp(200).fadeOut(100)
 			});
-//});
