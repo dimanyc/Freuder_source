@@ -6,17 +6,17 @@
 
     
 <% else %>
-        <% @filtered_messages.each do |i| %>
+        <% @filtered_messages.each do |filter| %>
         <div class="panel panel-default">
           <div class="panel-heading">
-          by <b><%=i.author%></b> &nbsp;|&nbsp; slipped at:<b> "<%=i.slipped.join(" ")%>"</b>
+          by <b><%=filter.author%></b> &nbsp;|&nbsp; slipped at:<b> "<%=filter.slipped.join(" ")%>"</b>
             <div class="pull-right">
-            <%= image_tag(i.author_image_url, class: "author-pic img-circle") %>
+            <%= image_tag(filter.author_image_url, class: "author-pic img-circle") %>
             </div>
 
           </div><!--end_.panel-heading-->
           <div class="panel-body">
-            <%=i.body%>
+            <%=filter.body%>
           </div><!--end_panel-body-->
         </div><!--end_.panel panel-default-->
         <% end %>

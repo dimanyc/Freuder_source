@@ -1,6 +1,6 @@
   <br/>
   <div class="well">
-    <h4><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> Create New Tag:</h4>
+    <h4><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Create New Filter:</h4>
 
     <div class="panel panel-default">
       <div class="panel-body"> 
@@ -29,12 +29,12 @@
 
         <div class="form-group">
         <%= f.label :description,"Description:" %><br/>
-        <%= f.text_area :description, class: "form-control counted", name: "tag", placeholder: "Describe your tag here (optional)", rows:"4", style: "margin-bottom:10px;" %>    
+        <%= f.text_area :description, class: "form-control counted", name: "filter", placeholder: "Describe your filter here (optional)", rows:"4", style: "margin-bottom:10px;" %>    
         </div><!--end_.form-group-->
 
         <div class="form-group">
         <%= f.submit class: "btn btn-success", id: "create-new-filter" do %>
-          <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Create Tag
+          <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Create Filter
         <% end %>
         </div><!--end_.form-group-->
         

@@ -1,9 +1,9 @@
 <h1>Filtered Messages:</h1>
 <ul>
 
-	<% @filtered_messages.each do |i| %>
+	<% @filtered_messages.each do |message| %>
 	<li>
-	<%= i.body %>
+	<%= message.body %>
 	</li>
 	<% end %>
 	

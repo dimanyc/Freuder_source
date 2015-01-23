@@ -7,17 +7,17 @@
 
 <% else %>
 
-        <% @messages.each do |i| %>
+        <% @messages.each do |message| %>
         <div class="panel panel-default">
           <div class="panel-heading">
-          by <b><%=i.author%></b>
+          by <b><%=message.author%></b>
             <div class="pull-right">
-            <%= image_tag(i.author_image_url, class: "author-pic img-circle") %>
+            <%= image_tag(message.author_image_url, class: "author-pic img-circle") %>
             </div>
 
           </div><!--end_.panel-heading-->
           <div class="panel-body">
-            <%=i.body%>
+            <%=message.body%>
           </div><!--end_panel-body-->
         </div><!--end_.panel panel-default-->
         <% end %>
