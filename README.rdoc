@@ -22,23 +22,23 @@ Freuder also lets you send your tweets, via "New Tweet" tab. Just click on the t
 == Specs:
 
 ==== Gems and dependencies:
-Aside from the standard rails gem stack, Freuder uses `Twitter` gem to connect to Twitter API and `omniauth-twitter` gem to allow users use their Twitter login credentials. 
+Aside from the standard rails gem stack, Freuder uses <tt>Twitter</tt> gem to connect to Twitter API and <tt>omniauth-twitter</tt> gem to allow users use their Twitter login credentials. 
 
 ==== Controllers & Class methods:
-* Parsing the user's timeline is ran by a class method called `refresh`, called by `messages_controller`.
-* Analysis of tweets against specified filters is happening in the `analyze` method, called by `messages_controller=analyze` action. 
+* Parsing the user's timeline is ran by a class method called <tt>refresh</tt>, called by <tt>messages_controller</tt>.
+* Analysis of tweets against specified filters is happening in the <tt>analyze</tt> method, called by <tt>messages_controller#analyze</tt> action. 
 
 ==== DB, Models and Associations:
-App uses three models - `User`, `Filter` and `Message`, with the following associations:
+App uses three models - <tt>User</tt>, <tt>Filter</tt> and <tt>Message</tt>, with the following associations:
 
-* `User` has_many `Filters`
-* `Filters` belong to `Users`
-* `Messages` are polymorphic, referencing both `User` and `Filter` classes. 
+* <tt>User</tt> has_many <tt>Filters</tt>
+* <tt>Filters</tt> belong to <tt>Users</tt>
+* <tt>Message</tt> is polymorphic, referencing both <tt>User</tt> and <tt>Filter</tt> classes. 
 
-The `User` table records inherit data passed by Twitter API. For example, column `image_url` inherits the profile image URI passed by Twitter. 
+The <tt>User</tt> table records inherit data passed by Twitter API. For example, column <tt>image_url</tt> inherits the profile image URI passed by Twitter. 
 
 === Front-end & UJS
-Freuder uses `Bootstrap 3.*` framework, enhanced with a few `UJS` calls. 
-`Filters` are referred to as `tags` on the front-end, because I couldn't find any good-looking filter icons.
+Freuder uses <tt>Bootstrap 3.*</tt> framework, enhanced with a few <tt>UJS</tt> calls. 
+<tt>Filters</tt> are referred to as <tt>tags</tt> on the front-end, because I couldn't find any good-looking filter icons.
 
 
