@@ -1,19 +1,8 @@
-// $('#refresh-feed').click('#all-messages').slideUp(200).fadeOut(100);
 
-// $('div.panel-default').on('ajax:complete',function(e)	{
-// 			$(this).fadeIn(100).slideDown(200)
+// Twitter API blocks this due to too many requests.. 
+
+// $("a#refresh-feed").on('ajax:complete',function(e)	{
+// 			$("#all_messages").slideUp(200);
+// 			$("<%= escape_javascript(render 'users/all_messages') %>").slideDown(200).fadeIn(100);
 // 			});
-
-	// $("#refresh-feed").on('ajax:before',function(e)	{
-	// 		$("#all-messages").slideUp(200).fadeOut(100);
-	// 		});
-	// $("#refresh-feed").on('ajax:complete',function(e)	{
-	// 		$("#all-messages").fadeIn(200).slideDown(100);
-	// 		});
-
-
-$("a#refresh-feed").on('ajax:complete',function(e)	{
-			$("#all_messages").hide()
-			$("<%= escape_javascript(render 'users/all_messages') %>").slideDown(200).fadeIn(100);
-			});
 
