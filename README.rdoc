@@ -1,4 +1,6 @@
 = Freuder v2.0.1
+![Image of Yaktocat]
+(https://raw.githubusercontent.com/dimanyc/Freuder_v2.0.1/master/app/assets/images/filter-messages-button-git.jpg)
 
 Freuder parses user's timeline Tweets and allows filtration of messages based on specified keywords (see `User / Flow` below). This is my first app. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
