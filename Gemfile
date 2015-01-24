@@ -41,7 +41,7 @@ gem 'twitter'
 
 gem 'certified'
 gem 'omniauth-twitter'
-gem "binding_of_caller"
+#gem "binding_of_caller"
 group :development do
 	#gem "better_errors"
 	gem 'sqlite3'

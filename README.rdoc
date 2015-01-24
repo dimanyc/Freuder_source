@@ -1,46 +1,44 @@
-![alt tag](http://raw.githubusercontent.com/dimanyc/Freuder_v2.0.1/master/app/assets/images/freuder-logo.png)
+= Freuder v2.0.1
 
-== About:
-==== What:
-Freuder parses user's timeline Tweets and allows `filtration` of messages based on specified keywords (see Flow).
-
-==== Why: 
-Freuder is the first `serious` app for me. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
+Freuder parses user's timeline Tweets and allows filtration of messages based on specified keywords (see `User / Flow` below). This is my first app. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
 == Use / Flow:
 ==== Initial load:
-Upon the initial load, user is prompted to connect to their Twitter account (via <tt>Twitter OAuth</tt> and <tt>Twitter API Gem</tt>). Once the connection is established, the app pulls user info and appends the params to the <tt>Users</tt> table. 
+Upon the initial load, user is prompted to connect to their Twitter account (via <tt>Twitter OAuth</tt> and <tt>Twitter API Gem</tt>). Once the connection is established, the app pulls user data and appends it to the <tt>Users</tt> table. 
 ==== Pulling the Twitter Timeline:
 To pull the timeline, user can click on the "Refresh" button, located on the upper right part of the "All Messages" tab pane. 
 
+==== Creating a filter:
+To create a filter,
+
+1. Press "Create Tag" on the left and enter your name and "slips". _" Slips" are keywords you want to search by. Once done, press "Create Tag". _
+2. Head over to your message feed, and choose "Filtered Messages" tab. 
+3. Press "Filter Message"
+
+==== Sending a Tweet:
+
+Freuder also lets you send your tweets, via "New Tweet" tab. Just click on the tab, and enter your tweet text as you normally would, using your Twitter profile page. All characters, links and hashtags are allowed, but will not be hyperlinked and / or highlighted. 
+ 
+== Specs:
+
+==== Gems and dependencies:
+Aside from the standard rails gem stack, Freuder uses `Twitter` gem to connect to Twitter API and `omniauth-twitter` gem to allow users use their Twitter login credentials. 
+
+==== Controllers & Class methods:
+* Parsing the user's timeline is ran by a class method called `refresh`, called by `messages_controller`.
+* Analysis of tweets against specified filters is happening in the `analyze` method, called by `messages_controller=analyze` action. 
+
+==== DB, Models and Associations:
+App uses three models - `User`, `Filter` and `Message`, with the following associations:
+
+* `User` has_many `Filters`
+* `Filters` belong to `Users`
+* `Messages` are polymorphic, referencing both `User` and `Filter` classes. 
+
+The `User` table records inherit data passed by Twitter API. For example, column `image_url` inherits the profile image URI passed by Twitter. 
+
+=== Front-end & UJS
+Freuder uses `Bootstrap 3.*` framework, enhanced with a few `UJS` calls. 
+`Filters` are referred to as `tags` on the front-end, because I couldn't find any good-looking filter icons.
 
 
-==== Specs:
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
--- run `rake db_tasks:rebuild` to drop and migrate the db.
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
