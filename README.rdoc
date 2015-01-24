@@ -1,14 +1,17 @@
-== README
+https://raw.githubusercontent.com/dimanyc/Freuder_v2.0.1/master/app/assets/images/freuder-logo.png
 
+== About:
 ==== What:
 Freuder parses user's timeline Tweets and allows `filtration` of messages based on specified keywords (see Flow).
 
 ==== Why: 
 Freuder is the first `serious` app for me. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
-==== Use / Flow:
-
+== Use / Flow:
+==== Initial load:
 Upon the initial load, user is prompted to connect to their Twitter account (via <tt>Twitter OAuth</tt> and <tt>Twitter API Gem</tt>). Once the connection is established, the app pulls user info and appends the params to the <tt>Users</tt> table. 
+==== Pulling the Twitter Timeline:
+To pull the timeline, user can click on the "Refresh" button, located on the upper right part of the "All Messages" tab pane. 
 
 
 
