@@ -1,1 +1,1 @@
-$("<%= escape_javascript(render @filter) %>").appendTo("#user-filters-list");
+$("<%= escape_javascript(render @filter) %>").hide().appendTo("#user-filters-list").fadeIn(200).slideDown(100);

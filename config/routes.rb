@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   
   resources :messages
-   resources :filters, only: [:show,:index,:create]
+  resources :filters, only: [:show,:index,:create,:destroy]
 
   resources :sessions, only: [:destroy], as: :logout
 
