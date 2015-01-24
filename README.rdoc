@@ -1,18 +1,18 @@
 == README
 
-### What:
+==== What:
 Freuder parses user's timeline Tweets and allows `filtration` of messages based on specified keywords (see Flow).
 
-### Why: 
+==== Why: 
 Freuder is the first `serious` app for me. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
-### Use / Flow:
+==== Use / Flow:
 
 Upon the initial load, user is prompted to connect to their Twitter account (via <tt>Twitter OAuth</tt> and <tt>Twitter API Gem</tt>). Once the connection is established, the app pulls user info and appends the params to the <tt>Users</tt> table. 
 
 
 
-### Specs:
+==== Specs:
 
 
 This README would normally document whatever steps are necessary to get the
