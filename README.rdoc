@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/dimanyc/Freuder_v2.0.1/master/app/assets/images/freuder-logo.png
+![alt tag](https://raw.githubusercontent.com/dimanyc/Freuder_v2.0.1/master/app/assets/images/freuder-logo.png)
 
 == About:
 ==== What:
