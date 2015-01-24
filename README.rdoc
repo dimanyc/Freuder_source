@@ -1,7 +1,5 @@
 = Freuder v2.0.1
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-
 Freuder parses user's timeline Tweets and allows filtration of messages based on specified keywords (see `User / Flow` below). This is my first app. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
 == Use / Flow:
