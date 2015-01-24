@@ -13,7 +13,7 @@
 
         <span class="pull-right delete-tag"><!-- use JS to hide on mouseout -->
 
-        <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting...", id:"#{n}"}, remote: true, class: "user-tag-delete" do %>
+        <%= link_to filter_path(i), method: :delete, data:{confirm: "Are You Sure you want to delete tag \"#{i.name}\"?", disable_with: "Deleting...", id:"#{n}"}, remote: true, id: "user-tag-delete" do %>
           <b class="badge red"><span class="list-group-addon glyphicon glyphicon-remove"></span></b><%end%>
         </span>
       </div><% end %>

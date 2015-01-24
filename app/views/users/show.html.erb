@@ -59,7 +59,7 @@
     
         <div class="pull-right">
           <span class="badge green">
-            <%=link_to refresh_path do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %>
+            <%=link_to refresh_path, remote: true do %> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh <% end %>
           </span>
           <span class="badge red">
            <%=link_to destroy_all_messages_path do %> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All <% end %>

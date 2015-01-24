@@ -66,10 +66,12 @@ class MessagesController < ApplicationController
     
     if @messages
       respond_to do |format|
-        format.html{redirect_to user_path(current_user), notice: "Message feed has been updated!"}
-      end
+        #format.html{redirect_to current_user, notice: "Message feed has been updated!"}
+        format.html{ redirect_to user_path(current_user), notice: "Message feed has been updated!" }
+        format.js{}
+      end # respond_to do |format|
     else
-      flash[:alert] = "Problem reloading the message feed"
+      flash[:alert] = "Problem reloading your feed"
     end
     
   end     
