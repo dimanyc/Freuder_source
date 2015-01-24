@@ -15,7 +15,7 @@ class FiltersController < ApplicationController
         current_user.filters << @filter
         format.html { redirect_to user_path(current_user), notice: "Filter has been created!" }
         format.js {}
-        format.json { render json: @filter, status: :created, location: @user_tags }
+        format.json { render json: @filter, status: :created, location: @user_filters }
       else
         format.html { render :new, alert: "Problem adding your filter. Please double check your form" }
         format.json { render json: @filter.errors, status: :unprocessable_entity }

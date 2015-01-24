@@ -208,19 +208,14 @@ ul.right-to-left
 		border-radius: 0px;
 	}
 
-
-
-
-
-.list-group-item>.badge{float:none!important;}
 .tab-pane span.badge a{color:white;}	
 a span.list-group-addon{display:inline;font-weight: normal;color:white;}
-section#user-tags 
+section#user-filters 
 	{
 		#filter-form-toggle
-		{
-			display:none;
-		}
+			{
+				display:none;
+			}
 	}
 
 

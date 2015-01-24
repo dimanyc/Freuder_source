@@ -16,9 +16,7 @@
 
     <h4>Your filters:</h4>
       <ul class="list-group" id="user-filters-list">
-        
         <%= render @user_filters %>
-      
       </ul><!--end_.list-group-->
 
     <%= link_to new_user_filter_path(current_user), class: "btn btn-primary", id: "filter-form-toggler", data: {}, remote: true do %>
