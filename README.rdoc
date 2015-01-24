@@ -1,6 +1,6 @@
 = Freuder v2.0.1
 
-Freuder parses user's timeline Tweets and allows filtration of messages based on specified keywords (see `User / Flow` below). This is my first app. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
+Freuder parses user's timeline Tweets and allows filtration of messages based on specified keywords (see `Use / Flow` below). This is my first app. I plan to use it as a demo to help me find internship opportunities. Any feedback and comments is highly appreciated. 
 
 == Use / Flow:
 ==== Initial load:
