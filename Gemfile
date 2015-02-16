@@ -11,7 +11,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-gem 'sqlite3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -42,11 +41,11 @@ gem 'twitter'
 
 gem 'certified'
 gem 'omniauth-twitter'
-#gem "binding_of_caller"
-group :development do
-	#gem "better_errors"
+
+group :development, :test do
+	
 	gem 'sqlite3'
-	#gem 'web-console'
+	
 end
 
 
