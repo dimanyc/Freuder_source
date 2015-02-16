@@ -7,4 +7,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 		:force_login => 'true'#turn back on for final DEV or turn off for testing
 		}
     }
+     on_failure { |env| SessionsController.action(:failure).call(env) }
 end
