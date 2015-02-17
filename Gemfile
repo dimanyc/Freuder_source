@@ -24,7 +24,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'twitter'
 gem 'certified'
 gem 'omniauth-twitter'
-gem 'dotenv-rails'
+#gem 'dotenv-rails'
 
 group :development, :test do
 	gem 'sqlite3'
